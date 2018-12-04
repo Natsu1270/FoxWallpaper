@@ -1,0 +1,152 @@
+
+/* NAVBAR AREA */
+#main-logo{
+    height: 100%;
+    font-family: 'Righteous', cursive;
+    font-size: 3vw;
+}
+#fox-logo{
+    margin-left: 20px;
+    height: 150%;
+}
+
+.mynav{
+    font-family: 'Comfortaa', cursive;
+    background-color: #0f0c98a6 !important;
+}
+.mybutton{
+    margin-left: 10px;
+    display: inline-block;
+    background-color: black    ;
+    border-radius: 0px;
+}
+.mybutton:hover{
+    transform: scale(1.1);
+}
+#my-font{
+    font-family: 'Comfortaa', cursive !important;
+}
+.logbut{
+    background-color: #1b448e !important;
+    border-radius: 0px !important;
+    font-family: 'Comfortaa', cursive !important;
+}
+.logbut:hover{
+    background-color: black !important;
+    transition:0.7s;
+    color:white !important;
+}
+.icon{
+    float:right;
+    display:none;
+}
+#bars{
+    font-size: 60px !important;
+}
+.material-icons{
+    font-size:3vw !important;
+}
+.search-area{
+    /* height: 80% !important ; */
+    background:#00000080;
+}
+#search{
+    height: 56px !important;
+    overflow: hidden;
+}
+.dropdown-content.row{
+    overflow: visible;
+    width :70%;
+    height: auto;
+  }
+.cat{
+    font-size: 1.5vw !important;
+}
+.mynav li{
+    text-align:center !important;
+}
+
+.dropdown2 a{
+    display: inline-block !important;
+    color:#5e3089 !important;
+}
+/* navbar responsive */
+
+@media only screen and (max-width: 992px) {
+    .mynav a.icon{
+        float:right !important;
+        display:block;
+        padding-right:5px;
+    }
+    .mybutton{
+        display:block;
+    }
+    .mynavres .mybutton{
+        display:none;
+        
+    }
+    .mybutton:hover{
+        transform: scale(1.01);
+    }
+    #logz{
+        margin-top:20px;
+    }
+    #fox-logo,#main-logo{
+        display:block;
+        position: absolute;
+        left:50px;
+    }
+    #main-logo{
+        display:none;
+    }
+    #search-form{
+        margin-left: 10px;
+    }
+}
+.txtHelper{
+    color:red !important;
+    font-weight: bold !important;
+}
+/* CONTENT AREA */
+/* SEARCH SECTION */
+.content{
+    height: 1000px !important;
+}
+.search-section{
+    height: 80vh;
+    position: relative;
+}
+.search-section .poster{
+    height: 100%;
+    width: 100%;
+    margin-top: -15px;
+}
+.poster{
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-direction: column; /* Safari 6.1+ */
+    display: flex;
+    flex-direction: column ;
+    background-size: cover;
+    background-position: center bottom; 
+}
+.banner{
+    padding:15px;
+    background-color: #13002333;
+    height: 65px;
+    color:white;
+    text-align: center;
+}
+.banner strong{
+    font-size: 2.5vw;
+}
+.searchtitle{
+    text-align: center;
+    color:white;
+}
+.searchtitle p{
+    font-weight: bold;
+    font-size: 20px;
+}
+/* end of search area */
+/* tab index */
+
