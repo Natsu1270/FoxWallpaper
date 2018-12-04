@@ -18,7 +18,7 @@ if(isset($_POST['upload'])){
         }else if($Cat_id==3){
             $image_location='bike';
         }else if($Cat_id==4){
-            $image_location='land';
+            $image_location='landscape';
         }else if($Cat_id==5){
             $image_location='girl';
         }

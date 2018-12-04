@@ -130,6 +130,7 @@
     background-position: center bottom; 
 }
 .banner{
+    font-family: 'Righteous', cursive;
     padding:15px;
     background-color: #13002333;
     height: 65px;
@@ -140,13 +141,30 @@
     font-size: 2.5vw;
 }
 .searchtitle{
+    font-family: 'Pacifico', cursive;
     text-align: center;
     color:white;
 }
 .searchtitle p{
-    font-weight: bold;
+    font-weight: normal;
     font-size: 20px;
 }
 /* end of search area */
 /* tab index */
-
+.tabmenu{
+    height: 41px !important;
+    margin-bottom: 10px !important;
+}
+.tabmenu li a{
+    font-size: 1.5vw !important;
+    font-family: 'Ubuntu', sans-serif;
+    color:white !important;
+    text-transform: capitalize;
+}
+.tabmenu li a:hover,a.active{
+    color:white !important;
+    background-color: rgb(57, 4, 80) !important;
+}
+.tabs .indicator {
+    background-color:orange !important;
+} /*Color of underline*/

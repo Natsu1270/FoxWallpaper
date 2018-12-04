@@ -21,13 +21,8 @@
                                     <option>3D Abstract</option>
                                     <option>Anime</option>
                                     <option>Bike</option>
-                                    <option>Animal</option>
+                                    <option>Landscape</option>
                                     <option>Girl</option>
-                                    <option>Sport</option>
-                                    <option>Nature</option>
-                                    <option>Space</option>
-
-
                                 </select>
                             </div>
                         </div>
@@ -55,125 +50,102 @@
         </div> <!-- End of poster -->
 
         <!-- Tab area -->
-        <div class="tabmenu" style="height:47px">
-            <!-- <ul class="tabs tabs-fixed-width">
-               
-            </ul> -->
-            <div class="row" style="height:100%;text-align:center">
-                <div class="col s12">
-                    <ul class="tabs">
-                        <li class="tab col s2"><a class="active" href="#3d">3D Abstract</a></li>
-                        <li class="tab col s2"><a href="#anime">Anime</a></li>
-                        <li class="tab col s2"><a href="#bike">Bike</a></li>
-                        <li class="tab col s2"><a href="#nature">Landscape</a></li>
-                        <li class="tab col s2"><a href="#girl">Girl</a></li>
-                    </ul>
-                </div>
-            </div>
-
+        <div class="tabmenu">
+            <ul class="tabs tabs-fixed-width" style="background-color:#5e308a">
+                <li class="tab col s2"><a class="active" href="#3d">3D Abstract</a></li>
+                <li class="tab col s2"><a href="#anime">Anime</a></li>
+                <li class="tab col s2"><a href="#bike">Bike</a></li>
+                <li class="tab col s2"><a href="#landscape">Landscape</a></li>
+                <li class="tab col s2"><a href="#girl">Girl</a></li>
+            </ul> 
         </div>
-        
                 <div id="3d" class="3d gallery row card">
-                    <div class="col s4"> 
-                        <img src="images/3d_abstract/neon_bubbles_3-t1.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s4"> 
-                        <img src="images/3d_abstract/neon_bubbles_3-t1.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s4"> 
-                        <img src="images/3d_abstract/neon_bubbles_3-t1.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s4"> 
-                        <img src="images/3d_abstract/neon_bubbles_3-t1.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s4"> 
-                        <img src="images/3d_abstract/neon_bubbles_3-t1.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s4"> 
-                        <img src="images/3d_abstract/neon_bubbles_3-t1.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s4"> 
-                        <img src="images/3d_abstract/neon_bubbles_3-t1.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s4"> 
-                        <img src="images/3d_abstract/neon_bubbles_3-t1.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s4"> 
-                        <img src="images/3d_abstract/neon_bubbles_3-t1.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s4"> 
-                        <img src="images/3d_abstract/neon_bubbles_3-t1.jpg" class="materialbox responsive-img card">
-                    </div>
+                    <?php 
+                        $query="SELECT * FROM cms.image WHERE Cat_id=1";
+                        $query_res=mysqli_query($conn,$query);
+                        if(!$query_res){
+                            die('show wallpaper by category failed.' .mysqli_error($conn));
+                        }
+                        while($row=mysqli_fetch_assoc($query_res)){
+                            $wallpaper=$row['Wallpaper'];
+                            ?>
+                            <div class="col s4"> 
+                                <img src="images/3d_abstract/<?php echo $wallpaper?>" class="materialbox responsive-img card">
+                            </div>
+                        <?php      
+                        }
+                    ?>
                 </div>
+
                 <div id="anime" class="anime gallery row card">
-                    <div class="col s12 m6 l4"> 
-                        <img src="images/anime/goku_black_5k_2-t1.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s12 m6 l4"> 
-                        <img src="images/anime/goku_black_5k_2-t1.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s12 m6 l4"> 
-                        <img src="images/anime/goku_black_5k_2-t1.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s12 m6 l4"> 
-                        <img src="images/anime/goku_black_5k_2-t1.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s12 m6 l4"> 
-                        <img src="images/anime/goku_black_5k_2-t1.jpg" class="materialbox responsive-img card">
-                    </div>
+                    <?php 
+                        $query="SELECT * FROM cms.image WHERE Cat_id=2";
+                        $query_res=mysqli_query($conn,$query);
+                        if(!$query_res){
+                            die('show wallpaper by category failed.' .mysqli_error($conn));
+                        }
+                        while($row=mysqli_fetch_assoc($query_res)){
+                            $wallpaper=$row['Wallpaper'];
+                            ?>
+                            <div class="col s4"> 
+                                <img src="images/anime/<?php echo $wallpaper?>" class="materialbox responsive-img card">
+                            </div>
+                        <?php      
+                        }
+                    ?>
                 </div>
 
                 <div id="bike" class="bike gallery row card">
-                    <div class="col s12 m6 l4"> 
-                        <img src="images/bikes/2019_kawasaki_ninja_125_5k-t1.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s12 m6 l4"> 
-                        <img src="images/bikes/2019_kawasaki_ninja_125_5k-t1.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s12 m6 l4"> 
-                        <img src="images/bikes/2019_kawasaki_ninja_125_5k-t1.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s12 m6 l4"> 
-                        <img src="images/bikes/2019_kawasaki_ninja_125_5k-t1.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s12 m6 l4"> 
-                        <img src="images/bikes/2019_kawasaki_ninja_125_5k-t1.jpg" class="materialbox responsive-img card">
-                    </div>
+                <?php 
+                        $query="SELECT * FROM cms.image WHERE Cat_id=3";
+                        $query_res=mysqli_query($conn,$query);
+                        if(!$query_res){
+                            die('show wallpaper by category failed.' .mysqli_error($conn));
+                        }
+                        while($row=mysqli_fetch_assoc($query_res)){
+                            $wallpaper=$row['Wallpaper'];
+                            ?>
+                            <div class="col s4"> 
+                                <img src="images/bike/<?php echo $wallpaper?>" class="materialbox responsive-img card">
+                            </div>
+                        <?php      
+                        }
+                    ?>
                 </div>
-                <div id="nature" class="anime gallery row card">
-                    <div class="col s12 m6 l4"> 
-                        <img src="images/land/callingwp.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s12 m6 l4"> 
-                        <img src="images/land/followwp.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s12 m6 l4"> 
-                        <img src="images/land/gracewp.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s12 m6 l4"> 
-                        <img src="images/land/possiblewp.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s12 m6 l4"> 
-                        <img src="images/land/questwp.jpg" class="materialbox responsive-img card">
-                    </div>
+                <div id="landscape" class="anime gallery row card">
+                <?php 
+                        $query="SELECT * FROM cms.image WHERE Cat_id=4";
+                        $query_res=mysqli_query($conn,$query);
+                        if(!$query_res){
+                            die('show wallpaper by category failed.' .mysqli_error($conn));
+                        }
+                        while($row=mysqli_fetch_assoc($query_res)){
+                            $wallpaper=$row['Wallpaper'];
+                            ?>
+                            <div class="col s4"> 
+                                <img src="images/landscape/<?php echo $wallpaper?>" class="materialbox responsive-img card">
+                            </div>
+                        <?php      
+                        }
+                    ?>
                 </div>
 
                 <div id="girl" class="girl gallery row card">
-                    <div class="col s12 m6 l4"> 
-                        <img src="images/girl/5.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s12 m6 l4"> 
-                        <img src="images/girl/4.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s12 m6 l4"> 
-                        <img src="images/girl/7.png" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s12 m6 l4"> 
-                        <img src="images/girl/6.jpg" class="materialbox responsive-img card">
-                    </div>
-                    <div class="col s12 m6 l4"> 
-                        <img src="images/girl/3.jpg" class="materialbox responsive-img card">
-                    </div>
+                <?php 
+                        $query="SELECT * FROM cms.image WHERE Cat_id=5";
+                        $query_res=mysqli_query($conn,$query);
+                        if(!$query_res){
+                            die('show wallpaper by category failed.' .mysqli_error($conn));
+                        }
+                        while($row=mysqli_fetch_assoc($query_res)){
+                            $wallpaper=$row['Wallpaper'];
+                            ?>
+                            <div class="col s4"> 
+                                <img src="images/girl/<?php echo $wallpaper?>" class="materialbox responsive-img card">
+                            </div>
+                        <?php      
+                        }
+                    ?>
                 </div>
                 
                 

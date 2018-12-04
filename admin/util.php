@@ -75,7 +75,7 @@ function allPost($cat_id)
     }else if($cat_id==3){
         $image_location='bike';
     }else if($cat_id==4){
-        $image_location='land';
+        $image_location='landscape';
     }else if($cat_id==5){
         $image_location='girl';
     }

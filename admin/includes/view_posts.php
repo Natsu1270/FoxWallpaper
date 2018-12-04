@@ -15,7 +15,7 @@ if(isset($_GET['delete'])){
         <table id="3d_table" class="table table-dark table-bordered table-hover table-striped">
             <thead class="thead-dark">
                 <tr>
-                    <?php fieldname() ?>
+                <?php fieldname() ?>
                 </tr>
             </thead>
             <tbody>
