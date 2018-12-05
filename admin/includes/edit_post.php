@@ -13,9 +13,16 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
         $tag=$row['Tag'];
     }
 }
-
+if(isset($_POST['edit_post'])){
+        $Cat_id=$_POST['cat_id'];
+        $tag=$_POST['tag'];
+        $query="update cms.image set Cat_ID='$Cat_id',tag='$tag' where id=$edit_id";
+        if(!mysqli_query($conn,$query)){
+            die("Insert failed" );
+        }
+}
 ?>
-    <form action="includes/view_posts.php" method="post" enctype='multipart/form-data'>
+    <form action="" method="post" enctype='multipart/form-data'>
         <div class="form-group">
             <label for="cat_id">Category ID</label>
             <input readonly type="text" id="cat_id"  class="form-control" name="cat_id">
