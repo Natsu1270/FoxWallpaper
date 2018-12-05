@@ -805,7 +805,7 @@ legend {
   color: #555;
 }
 
-.s003 #search2{
+.s003 #autocomplete-input{
   height:48px !important; 
 }
 .s003 form .inner-form .input-field input.placeholder {

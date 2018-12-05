@@ -22,7 +22,7 @@
                             </div>
                         </div>
                         <div class="input-field second-wrap">
-                            <input name="searchinput" id="search2" type="text" placeholder="Find wallpaper..." />
+                            <input autocomplete="off" name="searchinput"  type="text" id="autocomplete-input" class="autocomplete" placeholder="Find wallpaper..." />
                         </div>
                         <div class="input-field third-wrap">
                             <button class="btn-search" name="submit" type="submit">

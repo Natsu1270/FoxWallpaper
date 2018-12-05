@@ -1,5 +1,6 @@
 <?php include "include/database_connect.php";
 session_start();
+ob_start();
 if(isset($_GET['logout'])){
     session_destroy();
 }
@@ -13,10 +14,16 @@ if(isset($_POST['login'])){
         header("Location: login.php?error=1");
     }else{
         while($row=mysqli_fetch_assoc($login_res)){
+            $user_id=$row['user_id'];
             $username=$row['username'];
             $password=$row['password'];
+            $about=$row['about'];
+            $birthday=$row['birthday'];
+            $fullname=$row['fullname'];
+            $avatar=$row['avatar'];
             $email=$row['email'];
             $role=$row['role'];
+            $gender=$row['gender'];
             $status=$row['status'];
             if($log_password!==$password || $log_username!==$username){
                 header("Location: login.php?error_code=1");
@@ -26,10 +33,17 @@ if(isset($_POST['login'])){
                 header("Location: login.php?error_code=3");
             }
             else{
-                $_SESSION['isban']=$isban;
+                $_SESSION['status']=$status;
+                $_SESSION['user_id']=$user_id;
                 $_SESSION['logged']=true;
                 $_SESSION['username']=$username;
                 $_SESSION['role']=$role;
+                $_SESSION['email']=$email;
+                $_SESSION['gender']=$gender;
+                $_SESSION['fullname']=$fullname;
+                $_SESSION['about']=$about;
+                $_SESSION['birthday']=$birthday;
+                $_SESSION['avatar']=$avatar;
                 header("Location:index.php");
             }
         }

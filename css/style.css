@@ -1,5 +1,27 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 
+main {
+  flex: 1 0 auto;
+}
 /* NAVBAR AREA */
+.discoverybtn{
+  border-radius: 0px !important;
+  background-color: purple;
+  font-weight: bold !important;
+  margin-left:10px !important;
+}
+
+.discoverybtn a{
+
+  font-weight: bold !important;
+}
+.tap-target{
+  background-color: #35006794 !important;
+}
 #main-logo{
     height: 100%;
     font-family: 'Righteous', cursive;
@@ -26,6 +48,9 @@
 #my-font{
     font-family: 'Comfortaa', cursive !important;
 }
+#nav_catbtn{
+  font-weight: bold !important;
+}
 .logbut{
     background-color: #1b448e !important;
     border-radius: 0px !important;
@@ -44,7 +69,7 @@
     font-size: 60px !important;
 }
 .material-icons{
-    font-size:3vw !important;
+    font-size: 2vw !important;
 }
 .search-area{
     /* height: 80% !important ; */
@@ -65,7 +90,9 @@
 .mynav li{
     text-align:center !important;
 }
-
+#dropdown1 a{
+  color:purple !important;
+}
 .dropdown2 a{
     display: inline-block !important;
     color:#5e3089 !important;
@@ -110,7 +137,7 @@
 /* CONTENT AREA */
 /* SEARCH SECTION */
 .content{
-    height: 1000px !important;
+    height: inherit !important;
 }
 .search-section{
     height: 80vh;
@@ -157,7 +184,7 @@
 }
 .tabmenu li a{
     font-size: 1.5vw !important;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Comfortaa', cursive;
     color:white !important;
     text-transform: capitalize;
 }
@@ -166,7 +193,8 @@
     background-color: rgb(57, 4, 80) !important;
 }
 .tabs .indicator {
-    background-color:orange !important;
+  height: 3px !important;
+    background-color:lightgreen !important;
 } /*Color of underline*/
 
 .suggest{
@@ -181,7 +209,7 @@
     height: 200px;
  }
 .grid-item--width2 { width: 400px; }
-/* html { overflow-y: scroll !important; } */
+html { overflow-y: scroll !important; }
 
 /* GALLERY */
 .gallery {
@@ -529,4 +557,98 @@
 }
 .tabs-content.carousel.carousel-slider{
     height: 1200px !important;
+}
+
+/* Card component */
+.wall-card{
+  position: relative;
+}
+.wall-card img{
+  opacity: 1;
+  transition: .5s ease;
+  backface-visibility: hidden;
+  z-index: -100;
+}
+.wall-card .cardbut{
+  padding:2px 4px;
+  border-radius: 0px;
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  display: inline-block;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+.wall-card .c1{
+  top: 50px;
+  right: 10px;
+}
+.wall-card .c2{
+  top: 50px;
+  right: 50px;
+}
+
+.wall-card:hover img{
+  transform: scale(1.02);
+  -ms-transform: scale(1.1);
+  opacity: 0.8;
+}
+.cardbut a i{
+  font-size: 3.2vw !important;
+}
+.wall-card:hover .cardbut{
+  
+  z-index: 10;
+  opacity: 1;
+}
+.ccprofile{
+  background:#5e308a !important;
+}
+.card-content h4,p{
+  color:white !important;
+}
+/* FOOTER SECTION */
+.page-footer{
+  background-color:#5e308a;
+}
+.page-footer #fox-logo-footer{
+  height: 80px;
+}
+.footer-copyright{
+  background-color: #350263 !important;
+}
+
+
+/* PROFILE SECTION */
+.profile_detail{
+  margin-top:50px;
+  background:#5e3089;
+}
+.profile_detail h1,h2,h3,h4,h5,h6,p,a{
+  color: white !important;
+}
+.card-panel{
+  background-color:#5e308a !important;
+}
+.card-panel h1,h2,h3,h4,h5,h6,p,a{
+  color: white !important;
+}
+.usr{
+  width: 100%;
+  text-align: center;
+  background:rgba(0, 0, 0, 0.28) !important;
+}
+.searchuser{
+  height: 60px;
+  margin-top: 4px !important;  
+  background-color: #350263;
+}
+
+/* edit profile modal */
+.modal-content{
+  background-color: #5e308a !important;
+}
+.modal-footer{
+  background-color: black !important;
 }

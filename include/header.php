@@ -24,7 +24,9 @@ session_start();
     <!-- Compiled and minified JavaScript -->
     
     <script src="js/jquery-3.3.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/fullscreen-jquery.js"></script>
+    <script src="js/materialize.js"></script>
+
     <script src="js/masonry.min.js"></script>
     <script src="js/main.js"></script>
     <title>Fox Wallpaper</title>
