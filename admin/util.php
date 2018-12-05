@@ -90,7 +90,7 @@ function allPost($cat_id)
         for($i=0;$i<count($row);$i++){
             if($i==2){
                 $img=$row[2];
-                echo "<td><img class='img-responsive' src='../images/$image_location/{$row[$i]}'></td>";
+                echo "<td><img class='img-responsive' src='../images/{$row[$i]}'></td>";
             }else{
                 echo "<td>{$row[$i]}</td>";
             }

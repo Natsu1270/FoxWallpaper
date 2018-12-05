@@ -22,7 +22,7 @@ if(isset($_POST['upload'])){
         }else if($Cat_id==5){
             $image_location='girl';
         }
-        move_uploaded_file($temp_wallpaper,"../images/$image_location/$wallpaper");
+        move_uploaded_file($temp_wallpaper,"../images/$wallpaper");
         $query="insert into cms.image(Cat_id,Wallpaper,Owner,Date_upload,Tag)";
         $query.="values('$Cat_id','$wallpaper','$Owner','$date','$tag')";
         if(!mysqli_query($conn,$query)){

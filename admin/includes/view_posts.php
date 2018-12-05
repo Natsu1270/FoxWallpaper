@@ -7,7 +7,14 @@ if(isset($_GET['delete'])){
         die('Query failed');
     }
 }
-
+if(isset($_POST['edit_post'])){
+    $Cat_id=$_POST['cat_id'];
+    $tag=$_POST['tag'];
+    $query="update cms.image set Cat_ID='$Cat_id',tag='$tag' where id=$edit_id";
+    if(!mysqli_query($conn,$query)){
+        die("Insert failed" );
+    }
+}
 ?>
 
 

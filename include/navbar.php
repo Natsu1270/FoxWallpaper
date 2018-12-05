@@ -22,7 +22,7 @@
 
             <div class="col s3 sitelogo" style="padding-left:40px">
                 <img id="fox-logo" src="logo/Fox.png" alt="foxwallpaper" class="brand-logo responsive-img">
-                <a id="main-logo" href="#" class="brand-logo">FoxWallpaper</a>
+                <a id="main-logo" href="index.php" class="brand-logo">FoxWallpaper</a>
             </div>
 
 
@@ -37,7 +37,7 @@
 
 
             <div class="col s4 right hide-on-med-and-down" id="logz" style="text-align:center">
-                <a class='dropdown-trigger btn mybutton' href='#' data-target='dropdown2'>Category</a>
+                <a class='dropdown-trigger btn waves-effect waves-light mybutton' href='#' data-target='dropdown2'>Category</a>
                 <!-- Login/sign up area -->
                 <!-- <a class='dropdown-trigger ccc btn mybutton' href='#' data-target='dropdown1'>Category</a> -->
                 <?php if(isset($_SESSION['role']) && isset($_SESSION['logged'])){
