@@ -1,5 +1,5 @@
 <?php include"include/header.php";
-$islog=true;
+    $islog=true;
 if(!isset($_SESSION['logged'])){
     $islog=false;
 }else{
@@ -29,7 +29,7 @@ if(!isset($_SESSION['logged'])){
             </div>
             <!-- Display wallpaper here -->
             <div id="3d" class="3d cat_wall">
-
+                
                 <?php showWallByCate(1,$islog);?>
 
             </div>

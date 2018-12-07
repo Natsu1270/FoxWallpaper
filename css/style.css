@@ -697,3 +697,17 @@ html { overflow-y: scroll !important; }
 .cattt .select-wrapper .select-dropdown.dropdown-trigger{
   color:white !important;
 }
+.dwnwallsite .carousel-item{
+  height:auto !important;
+}
+.carousel{
+  height:250px !important;
+}
+.plusbtn{
+  background-color:purple;
+}
+.redz{
+  background-color: red;
+  opacity: 1 !important;
+  z-index:20;
+}

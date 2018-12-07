@@ -3,7 +3,11 @@
 $ownpage=true;
 if(isset($_GET['user_id'])){
     $user_id=(int)$_GET['user_id'];
-    if($user_id!=$_SESSION['user_id']){
+    if(isset($_SESSION['logged'])&&$_SESSION['logged']){
+        if($user_id!=$_SESSION['user_id']){
+            $ownpage=false;
+        }
+    }else{
         $ownpage=false;
     }
     $query="SELECT * FROM cms.user WHERE user_id=$user_id";
@@ -192,8 +196,14 @@ if(isset($_GET['user_id'])){
                     <a href="#modal1" class="btn waves-effect modal-trigger waves-light red">Edit Profile</a>
                 <?php }?>
                 
-                <a class="mybutton waves-effect waves-light btn" href="logout.php"><b>Log out</b></a>
-                <a class="mybutton waves-effect waves-light btn" href="index.php"><b>Home</b></a>
+                <?php if(isset($_SESSION['logged'])){?>
+                    <a class="mybutton waves-effect waves-light btn" href="logout.php"><b>Log out</b></a>
+                    <a class="mybutton waves-effect waves-light btn" href="index.php"><b>Home</b></a>
+                <?php }else{?>
+                    <a class="mybutton waves-effect waves-light btn" href="login.php"><b>Log in</b></a>
+                    <a class="mybutton waves-effect waves-light btn" href="signup.php"><b>Sign up</b></a>
+                    <a class="mybutton waves-effect waves-light btn" href="index.php"><b>Home</b></a>
+                <?php }?>
 
             </div>
             <div class="tap-target" data-target="discovery">

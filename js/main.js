@@ -8,17 +8,19 @@ $(document).ready(function () {
     //         }
     //     })
     // })
-
+    $('.carousel').carousel({
+        indicators: true
+    });
 
     $('input#input_text, textarea#textarea2').characterCounter();
     // edit profile with ajax
     $('select').formSelect();
-    $("#password_edit").on('keyup',()=>{
-        var pass=$("#password_edit").val();
+    $("#password_edit").on('keyup', () => {
+        var pass = $("#password_edit").val();
         console.log(pass.length);
-        if(pass.length>=4){
+        if (pass.length >= 4) {
             $(".editpasshelper").html("");
-        }else if(pass.length<4){
+        } else if (pass.length < 4) {
             $(".editpasshelper").html("Password must have at least 4 character!");
         }
     })
@@ -28,26 +30,26 @@ $(document).ready(function () {
     });
     $('select').formSelect();
     $('.modal').modal({
-        opacity:0.6
+        opacity: 0.6
 
     });
 
     // autocomplete search
     $('input.autocomplete').autocomplete({
         data: {
-          "Girl": null,
-          "Nature": null,
-          "Landscape": null,
-          "3D": null,
-          "Abstract": null,
-          "Beautiful": null,
-          "Bike": null,
-          "Race": null,
-          "Motor": null,
-          "Microsoft": null,
-          "Google": 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Chrome_icon_%28September_2014%29.svg'
+            "Girl": null,
+            "Nature": null,
+            "Landscape": null,
+            "3D": null,
+            "Abstract": null,
+            "Beautiful": null,
+            "Bike": null,
+            "Race": null,
+            "Motor": null,
+            "Microsoft": null,
+            "Google": 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Chrome_icon_%28September_2014%29.svg'
         },
-      });
+    });
     $('.fullscreen').on('click', () => {
         $('body').fullscreen();
         return false;
@@ -70,60 +72,60 @@ $(document).ready(function () {
         itemSelector: '.grid-item',
         columnWidth: 50
     });
-    $("#search-user").submit(function(event){
-        
+    $("#search-user").submit(function (event) {
+
         $.ajax({
-            type:"post",
-            url:"http://localhost/LTW/include/search_user.php",
-            data:{
-                username:$("#search").val()
+            type: "post",
+            url: "http://localhost/LTW/include/search_user.php",
+            data: {
+                username: $("#search").val()
             },
-            success:function(result){
-                window.location.href = "http://localhost/ltw/profile.php?user_id="+String(result);
+            success: function (result) {
+                window.location.href = "http://localhost/ltw/profile.php?user_id=" + String(result);
             }
         })
     })
 });
 
-function editProfile(usr_id){
-    var the_user_id=usr_id;
+function editProfile(usr_id) {
+    var the_user_id = usr_id;
     $.ajax({
-        type:"post",
-        url:"http://localhost/LTW/include/edit_profile.php",
-        data:{
-            user_id:the_user_id,
-            fullname:$("#fullname").val(),
-            avatar:$("#avatar").val(),
-            password:$("#password_edit").val(),
-            about:$("#textarea1").val(),
-            email:$("#email").val(),
-            gender:$("#gender").val()
+        type: "post",
+        url: "http://localhost/LTW/include/edit_profile.php",
+        data: {
+            user_id: the_user_id,
+            fullname: $("#fullname").val(),
+            avatar: $("#avatar").val(),
+            password: $("#password_edit").val(),
+            about: $("#textarea1").val(),
+            email: $("#email").val(),
+            gender: $("#gender").val()
         },
-        success:function(result){
-           window.location.href = "http://localhost/ltw/profile.php?"+result;
+        success: function (result) {
+            window.location.href = "http://localhost/ltw/profile.php?" + result;
         },
-        error: function(){
-               alert('error!');
-           }
+        error: function () {
+            alert('error!');
+        }
     })
 }
 
-function searchUser () {
+function searchUser() {
     $.ajax({
-        type:"post",
-        url:"http://localhost/LTW/include/search_user.php",
-        data:{
-            username:$("#search").val()
+        type: "post",
+        url: "http://localhost/LTW/include/search_user.php",
+        data: {
+            username: $("#search").val()
         },
-        success:function(result){
-            window.location.href = "http://localhost/ltw/profile.php?user_id="+String(result);
-            }
-        })
- }
+        success: function (result) {
+            window.location.href = "http://localhost/ltw/profile.php?user_id=" + String(result);
+        }
+    })
+}
 
- function golog(){
+function golog() {
     window.location.href = "http://localhost/ltw/login.php";
- }
+}
 
 function getWallpaper(id) {
     var cid = id;
@@ -166,16 +168,94 @@ function getWallpaper(id) {
     });
 }
 
-function downNum(id){
-    var wall_id=id;
+function downNum(id) {
+    var wall_id = id;
     $.ajax({
-        type:"post",
-        url:"http://localhost/LTW/include/wallpaper_plus.php",
-        data:{
-            wallpaper_id:wall_id
+        type: "post",
+        url: "http://localhost/LTW/include/wallpaper_plus.php",
+        data: {
+            wallpaper_id: wall_id
         },
-        success:function(response){
+        success: function (response) {
             $("#dwnNum").html(response);
         }
     })
+}
+
+function love(islog, uid, wid,bid) {
+    
+    if (!islog) {
+        return golog();
+    } else {
+        var lovebut=$("#"+bid);
+        if (lovebut.hasClass("purple")) {
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/ltw/include/plusbtn_process.php",
+                data: {
+                    lovepurple : true,
+                    user_id: uid,
+                    wallpaper_id: wid
+                },
+                success: function (response) {
+                    lovebut.removeClass('purple');
+                    lovebut.addClass('redz');
+                    
+                }
+            })
+        } else if (lovebut.hasClass('redz')) {
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/ltw/include/plusbtn_process.php",
+                data: {
+                    lovered: true,
+                    user_id: uid,
+                    wallpaper_id: wid
+                },
+                success: function (response) {
+                    lovebut.removeClass('redz');
+                    lovebut.addClass('purple');
+                }
+            })
+        }
+    }
+}
+
+
+function bookmark(islog, uid, wid,bid) {
+    if (!islog) {
+        return golog();
+    } else {
+        var bookbut =$("#"+bid);
+        if (bookbut.hasClass("purple")) {
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/ltw/include/plusbtn_process.php",
+                data: {
+                    bookpurple : true,
+                    user_id: uid,
+                    wallpaper_id: wid
+                },
+                success: function (response) {
+                    bookbut.removeClass('purple');
+                    bookbut.addClass('redz');
+                }
+            })
+        } else if (bookbut.hasClass('redz')) {
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/ltw/include/plusbtn_process.php",
+                data: {
+                    bookred: true,
+                    user_id: uid,
+                    wallpaper_id: wid
+                },
+                success: function (response) {
+                    bookbut.removeClass('redz');
+                    bookbut.addClass('purple');
+                }
+            })
+        }
+    }
+
 }

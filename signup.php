@@ -6,9 +6,9 @@ if(isset($_POST["signup"])){
     $password=$_POST["pass"];
     $role="user";
     $email=$_POST["email"];
-    $isactive="no";
+    $status="unactived";
     $avatar="";
-    $insert_query="INSERT INTO cms.user(username,password,role,email,avatar,isactive) VALUES('{$username}','{$password}','{$role}','{$email}','{$avatar}','{$isactive}')";
+    $insert_query="INSERT INTO cms.user(username,password,role,email,avatar,status) VALUES('{$username}','{$password}','{$role}','{$email}','{$avatar}','{$status}')";
     $insert_result=mysqli_query($conn,$insert_query);
     if(!$insert_result){
         die("Insert user failed ".mysqli_error($conn));

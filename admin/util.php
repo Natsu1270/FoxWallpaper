@@ -166,6 +166,8 @@ function allUser()
                     echo"<a class='btn actionbtn btn-danger' href='users.php?ban_id=$row[0]&ban_code=0'>Unban</td>";
                 }else if($status==''||empty($status)){
                     echo "<a class='btn actionbtn btn-danger' href='users.php?ban_id=$row[0]&ban_code=1'>Ban</td>";
+                }else if($status='unactived'){
+                    echo "<a class='btn actionbtn btn-danger' href='users.php?ban_id=$row[0]&ban_code=2'>Active</td>";
                 }
                 echo "</tr>";
         }

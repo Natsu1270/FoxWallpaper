@@ -39,18 +39,18 @@
     <main>
         <div class="container">
             <div class="row">
-
                 <div class="col s8">
-                    <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="images/<?php echo $wallpaper?>">
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">Click to comment<i class="material-icons right">more_vert</i></span>
-                            <p><a class="btn red" style="color:white !important" href="#"><i class="material-icons prefix">bookmark</i></a></p>
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">Comment<i class="material-icons right">close</i></span>
+                    <div class="row dwnwallsite">
+                        <div class="card col s12">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="images/<?php echo $wallpaper?>">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Click to comment<i class="material-icons right">more_vert</i></span>
+                                <p><a class="btn red" style="color:white !important" href="#"><i class="material-icons prefix">bookmark</i></a></p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Comment<i class="material-icons right">close</i></span>
                                 <form method="post" id="cmt-form" action="include/comment_process.php?id=<?php echo $wallpaper_id?>">
                                     <div class="row">
                                         <div class="input-field col s12">
@@ -62,43 +62,78 @@
                                             <button type="reset" class="btn">Clear</button>
                                         </div>
                                     </div>
-                                    
+
                                 </form>
+                            </div>
+                        </div>
+                        
+                        <div class=" card col s12">
+                            
+                            <h5 style="color:purple !important"><b>Related Wallpapers</b></h5>
+                           
+                            <div class="carousel">
+                                <?php 
+                                $tagarr=explode(",",$Tag);
+                                $keyword=$tagarr[0];
+                                
+                                $query="SELECT * FROM cms.image WHERE Tag LIKE '%$keyword%' AND ID!=$wallpaper_id LIMIT 5";
+                                $relate=mysqli_query($conn,$query);
+                                if(!$relate){
+                                    die("find relate failed ".mysqli_error($conn));
+                                }
+                                while($row=mysqli_fetch_assoc($relate)){
+                                    $wall_id=$row['ID'];
+                                    $wallpaper=$row['Wallpaper'];
+                                    echo "<a class='carousel-item' href='http://localhost/ltw/download_dialog.php?ID=$wall_id'><img src='http://localhost/ltw/images/$wallpaper'></a>";
+                                }
+                            ?>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col s4">
-                    
-                        <div class="card-panel  z-depth-1">
-                            <div class="row valign-wrapper">
-                                <div class="col s2">
-                                     <!-- notice the "circle" class -->
-                                    <a href="profile.php?user_id=<?php echo $user_id?>"><img style="height:50px !important;width:50px !important" src="images/avatar/<?php echo $user_ava?>" alt="" class="circle downavatar"></a>
-                                </div>
-                                <div class="col s10">
-                                    <span class="black-text">
-                                        <a id="downOwner"  href="profile.php?user_id=<?php echo $user_id?>">    <?php echo $fullname ?></a>
-                                    </span>
-                                </div>
+                    <div class="card-panel  z-depth-1">
+                        <div class="row valign-wrapper">
+                            <div class="col s2">
+                                <!-- notice the "circle" class -->
+                                <a href="profile.php?user_id=<?php echo $user_id?>"><img style="height:50px !important;width:50px !important"
+                                        src="images/avatar/<?php echo $user_ava?>" alt="" class="circle downavatar"></a>
+                            </div>
+                            <div class="col s10">
+                                <span class="black-text">
+                                    <a id="downOwner" href="profile.php?user_id=<?php echo $user_id?>">
+                                        <?php echo $fullname ?></a>
+                                </span>
                             </div>
                         </div>
-                    
+                    </div>
+
                     <div class="card downarea">
                         <div class="card-content white-text downcard_content">
                             <div class="row">
-                                
+
                                 <div class="col s12" style="margin-bottom: 20px;">
-                                    <a onclick="downNum(<?php echo $wallpaper_id?>)" href="<?php echo $download_path?>" download class="btn green card"><b>Free Download</b></a>
+                                    <a onclick="downNum(<?php echo $wallpaper_id?>)" href="<?php echo $download_path?>"
+                                        download class="btn green card"><b>Free Download</b></a>
                                 </div>
                                 <div class="col s4">
-                                    <a href="" class="btn blue"><i class="material-icons">favorite</i></a><p><?php echo $Like_count ?> </p>
+                                    <a href="" class="btn blue"><i class="material-icons">favorite</i></a>
+                                    <p>
+                                        <?php echo $Like_count ?>
+                                    </p>
                                 </div>
                                 <div class="col s4">
-                                    <a href="#" class="btn blue"><i class="material-icons">cloud_download</i></a><p id="dwnNum"><?php echo $DownNum ?> </p>
+                                    <a href="#" class="btn blue"><i class="material-icons">cloud_download</i></a>
+                                    <p id="dwnNum">
+                                        <?php echo $DownNum ?>
+                                    </p>
                                 </div>
                                 <div class="col s4">
-                                    <a href="" class="btn blue"><i class="material-icons">comment</i></a><p><?php echo $CmtNum ?> </p>
+                                    <a href="" class="btn blue"><i class="material-icons">comment</i></a>
+                                    <p>
+                                        <?php echo $CmtNum ?>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -108,9 +143,9 @@
                             <h5 style="color:white !important">COMMENTS</h5>
                         </div>
                         <div style="background: #ddb9ff !important" class="card-content white-text">
-                        
-                        <div class="row">
-                            <?php $query="select * from cms.comment where wallpaper_id=$wallpaper_id order by date DESC";
+
+                            <div class="row">
+                                <?php $query="select * from cms.comment where wallpaper_id=$wallpaper_id order by date DESC";
                                   $find=mysqli_query($conn,$query);
                                   if(!$find){
                                       die("find cmt failed ". mysqli_error($conn));
@@ -121,32 +156,33 @@
                                       $username_cmt=$row['username'];
                                       $cmt_time=$row['date'];
                                     ?>
-                                     <div class="card-panel col s12 z-depth-1">
-                                         
-                                        <div class="row">
-                                            <div class="col s6">
-                                                <a href="profile.php?user_id=<?php echo $user_cmt?>"><?php echo $username_cmt?>:</a>
-                                            </div>
-                                            
-                                            <div style="background:#00000078" class="col s12">
-                                                <span style="font-size:20px" class="white-text">
-                                                    <?php echo $content ?>
-                                                </span>
+                                <div class="card-panel col s12 z-depth-1">
 
-                                            </div>
-                                            <div class="col s12" style="text-align: right !important">
-                                                <span style="text-align:right !important;font-size:10px" class="white-text">
-                                                    <?php echo $cmt_time ?>
-                                                </span>
-                                            </div>
+                                    <div class="row">
+                                        <div class="col s6">
+                                            <a href="profile.php?user_id=<?php echo $user_cmt?>">
+                                                <?php echo $username_cmt?>:</a>
+                                        </div>
+
+                                        <div style="background:#00000078" class="col s12">
+                                            <span style="font-size:20px" class="white-text">
+                                                <?php echo $content ?>
+                                            </span>
+
+                                        </div>
+                                        <div class="col s12" style="text-align: right !important">
+                                            <span style="text-align:right !important;font-size:10px" class="white-text">
+                                                <?php echo $cmt_time ?>
+                                            </span>
                                         </div>
                                     </div>
-                                   <?php }?>
+                                </div>
+                                <?php }?>
+                            </div>
                         </div>
                     </div>
                 </div>
-                </div>
-        </div>
+            </div>
         </div>
     </main>
     <footer class="page-footer">
@@ -154,4 +190,5 @@
     </footer>
 
 </body>
+
 </html>

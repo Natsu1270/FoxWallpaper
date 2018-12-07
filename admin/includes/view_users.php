@@ -16,6 +16,8 @@ if(isset($_GET['delete'])){
         $query="UPDATE cms.user SET status = 'ban' WHERE user_id=$ban_id";
     }else if($ban_act==0){
         $query="UPDATE cms.user SET status = '' WHERE user_id=$ban_id";
+    }else if($ban_act==2){
+        $query="UPDATE cms.user SET status = '' WHERE user_id=$ban_id";
     }
     $ban_res=mysqli_query($conn,$query);
     if(!$ban_res){
