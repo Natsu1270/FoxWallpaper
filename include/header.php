@@ -1,5 +1,5 @@
 <?php include "include/database_connect.php";
-include "include/imgbycat.php";
+include "include/WallpaperHelper.php";
 session_start();
 ?>
 <!DOCTYPE html>
@@ -29,5 +29,8 @@ session_start();
 
     <script src="js/masonry.min.js"></script>
     <script src="js/main.js"></script>
+    <style>#select-options-b935d574-b872-ed9a-d576-728bf46d34ae{
+            width:500px !important;
+            }</style>
     <title>Fox Wallpaper</title>
 </head>

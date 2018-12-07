@@ -45,14 +45,8 @@ if(isset($_POST['create_user'])){
 <table class="table table-dark table-bordered table-hover table-striped">
     <thead class="thead-dark">
         <tr>
-            <th>User ID</th>
-            <th>Username</th>
-            <th>Password</th>
-            <th>Role</th>
-            <th>Email</th>
-            <th>Avatar</th>
-            <th>Status</th>
-            <th>Action</th>       
+            <?php 
+            fieldnameUser(); ?>
         </tr>
     </thead>
     <tbody>

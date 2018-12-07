@@ -1,6 +1,36 @@
 $(document).ready(function () {
+    // comment with ajax
+    // $("#cmt-form").on('submit',function(){
+    //     $.ajax({
+    //         type:"post",
+    //         data:{
+
+    //         }
+    //     })
+    // })
+
+
+    $('input#input_text, textarea#textarea2').characterCounter();
     // edit profile with ajax
-    $('.modal').modal();
+    $('select').formSelect();
+    $("#password_edit").on('keyup',()=>{
+        var pass=$("#password_edit").val();
+        console.log(pass.length);
+        if(pass.length>=4){
+            $(".editpasshelper").html("");
+        }else if(pass.length<4){
+            $(".editpasshelper").html("Password must have at least 4 character!");
+        }
+    })
+    $('.datepicker').datepicker({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
+    $('select').formSelect();
+    $('.modal').modal({
+        opacity:0.6
+
+    });
 
     // autocomplete search
     $('input.autocomplete').autocomplete({
@@ -32,8 +62,8 @@ $(document).ready(function () {
 
     });
     $('.tabs').tabs({
-        swipeable: true,
-        responsiveThreshold: 1920
+        swipeable: false,
+        responsiveThreshold: 1000
     });
     $('.grid').masonry({
         // options
@@ -54,6 +84,46 @@ $(document).ready(function () {
         })
     })
 });
+
+function editProfile(usr_id){
+    var the_user_id=usr_id;
+    $.ajax({
+        type:"post",
+        url:"http://localhost/LTW/include/edit_profile.php",
+        data:{
+            user_id:the_user_id,
+            fullname:$("#fullname").val(),
+            avatar:$("#avatar").val(),
+            password:$("#password_edit").val(),
+            about:$("#textarea1").val(),
+            email:$("#email").val(),
+            gender:$("#gender").val()
+        },
+        success:function(result){
+           window.location.href = "http://localhost/ltw/profile.php?"+result;
+        },
+        error: function(){
+               alert('error!');
+           }
+    })
+}
+
+function searchUser () {
+    $.ajax({
+        type:"post",
+        url:"http://localhost/LTW/include/search_user.php",
+        data:{
+            username:$("#search").val()
+        },
+        success:function(result){
+            window.location.href = "http://localhost/ltw/profile.php?user_id="+String(result);
+            }
+        })
+ }
+
+ function golog(){
+    window.location.href = "http://localhost/ltw/login.php";
+ }
 
 function getWallpaper(id) {
     var cid = id;
@@ -94,4 +164,18 @@ function getWallpaper(id) {
             alert("fuck");
         }
     });
+}
+
+function downNum(id){
+    var wall_id=id;
+    $.ajax({
+        type:"post",
+        url:"http://localhost/LTW/include/wallpaper_plus.php",
+        data:{
+            wallpaper_id:wall_id
+        },
+        success:function(response){
+            $("#dwnNum").html(response);
+        }
+    })
 }

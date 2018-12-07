@@ -610,6 +610,7 @@ html { overflow-y: scroll !important; }
 }
 /* FOOTER SECTION */
 .page-footer{
+  padding-top: 2px !important;
   background-color:#5e308a;
 }
 .page-footer #fox-logo-footer{
@@ -631,7 +632,7 @@ html { overflow-y: scroll !important; }
 .card-panel{
   background-color:#5e308a !important;
 }
-.card-panel h1,h2,h3,h4,h5,h6,p,a{
+.card-panel>h1,h2,h3,h4,h5,h6,p,a{
   color: white !important;
 }
 .usr{
@@ -646,9 +647,53 @@ html { overflow-y: scroll !important; }
 }
 
 /* edit profile modal */
+.modal-footer{
+  background-color:#2f0161 !important;
+}
 .modal-content{
+  background-color: #5e308a;
+}
+.gen input{
+  color:white !important;
+}
+
+/* Download dialog */
+.downcard_content{
+  text-align: center !important;
+}
+#download_dialog{
+  width:80%;
+}
+.down-footer{
+  background-color:#5e308a !important;
+  border-radius:0px !important;
+}
+.down-content{
+  background-color: white !important;
+  border-radius:0px !important;
+}
+.closebtn{
+  border-radius: 0px !important;
+}
+.ava{
+  display: inline-block;
+  width:80px !important;
+  height: 70px !important;
+}
+.dropdown-content.select-dropdown{
+  width:500px !important;
+}
+.downarea{
   background-color: #5e308a !important;
 }
-.modal-footer{
-  background-color: black !important;
+
+#downOwner{
+    font-weight: bold;
+    margin-left: 20px;
+    color: white !important;
+    font-size: 20px;
+
+}
+.cattt .select-wrapper .select-dropdown.dropdown-trigger{
+  color:white !important;
 }

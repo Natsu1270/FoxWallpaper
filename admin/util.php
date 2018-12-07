@@ -131,7 +131,17 @@ function allComment()
         }
     }                            
 }
-
+function fieldnameUser()
+{
+    global $conn;
+    $query="select * from cms.user";
+    $query_res=mysqli_query($conn,$query);
+    if(!$query_res){
+        die("Query failed ");
+    }else{
+    while($row=mysqli_fetch_field($query_res)){
+        echo "<th scope='col'>$row->name</th>";
+}}}
 function allUser()
     {
         global $conn;
@@ -144,7 +154,12 @@ function allUser()
                 $status=$row[count($row)-1];
                 echo "<tr>";
                 for($i=0;$i<count($row);$i++){
+                    if($i==9){
+                        echo "<td><img class='img-responsive' src='../images/avatar/{$row[$i]}'></td>";
+                    }else{
                         echo "<td>{$row[$i]}</td>";
+                    }
+                        
                 }
                 echo "<td><a class='btn actionbtn btn-danger' href='users.php?delete=$row[0]'>Delete";
                 if($status=='ban'){

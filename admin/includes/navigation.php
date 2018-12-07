@@ -11,7 +11,7 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
-                <a  style="margin-top:12px;margin-left:0px;margin-right:10px;width:100px" href="../login.php?logout=1" class="btn btn-primary" >
+                <a  style="margin-top:12px;margin-left:0px;margin-right:10px;width:100px" href="../logout.php" class="btn btn-primary" >
                     <b>Log out</b>
                 </a>
                 <a href="../" style="margin-top:12px;margin-left:20px;margin-right:40px"  class="btn btn-danger"><b>Home Page</b></a>

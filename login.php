@@ -35,6 +35,7 @@ if(isset($_POST['login'])){
             else{
                 $_SESSION['status']=$status;
                 $_SESSION['user_id']=$user_id;
+                $_SESSION['password']=$password;
                 $_SESSION['logged']=true;
                 $_SESSION['username']=$username;
                 $_SESSION['role']=$role;
@@ -80,11 +81,11 @@ if(isset($_POST['login'])){
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
-                        <a href="signup.php" style="display:block;text-align: center;">Create  an  account</a>
+                        <a href="signup.php" style="display:block;text-align: center;color:black !important">Create  an  account</a>
                     </div>
 
                     <div class="signin-form">
-                        <h2 class="form-title">Log in</h2>
+                        <h2 style="color:black !important" class="form-title">Log in</h2>
                     <?php if(isset($_GET['error_code'])){ $error_code=$_GET['error_code'] ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <strong>Log in error!</strong> 
@@ -132,7 +133,7 @@ if(isset($_POST['login'])){
                             </div>
                         </form>
                         <div class="social-login">
-                            <span class="social-label">Or login with</span>
+                            <span style="color:black !important" class="social-label">Or login with</span>
                             <ul class="socials">
                                 <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
                                 <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
