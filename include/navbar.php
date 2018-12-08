@@ -47,9 +47,9 @@
     </ul>
 </div>
 <ul id='dropdown2' class='dropdown-content dropdown2'>
-    <a href="#!">Most download</a>
-    <a href="#!">Most favourite</a>
-    <a href="#!">Most comment</a>
+    <a href="option.php#mostdown">Most download</a>
+    <a href="option.php#mostlove">Most favourite</a>
+    <a href="option.php#mostcmt">Most comment</a>
 </ul>
 <!-- Tap Target Structure -->
 

@@ -5,7 +5,7 @@ if(isset($_POST['upload'])){
     for($i=0;$i<$up_count;$i++){
         $Cat_id=$_POST['cat_id'];
         $Owner='admin';
-        $date=date("Y-m-d");
+        $date=date('Y-m-d G:i:s');
         $wallpaper=$_FILES['wallpaper']['name'][$i];
         $temp_wallpaper=$_FILES['wallpaper']['tmp_name'][$i];
         

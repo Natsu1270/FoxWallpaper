@@ -5,7 +5,7 @@
         $upload_username=$_SESSION['username'];
         $cat_id=$_POST['upload_cat'];
         $tag=$_POST['tag'];
-        $date=date("Y-m-d");
+        $date=date('Y-m-d G:i:s');
         $image=$_FILES['upload_img']['name'];
         $tmp=$_FILES['upload_img']['tmp_name'];
         move_uploaded_file($tmp,"../images/$image");
@@ -14,7 +14,12 @@
         
         if(!mysqli_query($conn,$query)){
             die("Insert failed" .mysqli_error($conn));
+        }else{
+            $query="update cms.user set upload_count=upload_count+1 where user_id=$upload_userid";
+            if(!mysqli_query($conn,$query)){
+                die("increase upload count failed" .mysqli_error($conn));
             }
+        }
        
         header("Location:../index.php");
     }

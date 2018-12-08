@@ -267,6 +267,7 @@ if(isset($_GET['user_id'])){
             <div class="row ">
                 <div class="col s12 m5 ">
                     <div class="card-panel">
+                        <h4>Information:</h4>
                         <p><i class="material-icons">face</i> Name: <?php echo $fullname?></p>
                         <div class="divider"></div>
                         <p><i class="material-icons">wc</i> Gender: <?php echo $gender?></p>
@@ -276,7 +277,14 @@ if(isset($_GET['user_id'])){
                         <p><i class="material-icons">date_range</i> Birthday: <?php echo $birthday?></p>
                     </div>
                 </div>
-                
+                <div class="col s12 m5 ">
+                    <div class="card-panel">
+                        <?php 
+                            $upload_count=uploadedCount($user_id);
+                        ?>
+                        <h5>Uploaded: <?php echo $upload_count?> wallpapers</h5>;
+                    </div>
+                </div>
             </div>
         </div>
     </div>

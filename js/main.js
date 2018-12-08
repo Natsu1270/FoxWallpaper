@@ -65,7 +65,7 @@ $(document).ready(function () {
     });
     $('.tabs').tabs({
         swipeable: false,
-        responsiveThreshold: 1000
+        responsiveThreshold: 1920
     });
     $('.grid').masonry({
         // options

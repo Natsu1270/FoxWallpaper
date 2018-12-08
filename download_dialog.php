@@ -74,7 +74,7 @@
                             <div class="carousel">
                                 <?php 
                                 $tagarr=explode(",",$Tag);
-                                $keyword=$tagarr[0];
+                                $keyword=$tagarr[rand(0,3)];
                                 
                                 $query="SELECT * FROM cms.image WHERE Tag LIKE '%$keyword%' AND ID!=$wallpaper_id LIMIT 5";
                                 $relate=mysqli_query($conn,$query);
@@ -94,7 +94,7 @@
 
                 <div class="col s4">
                     <div class="card-panel  z-depth-1">
-                        <div class="row valign-wrapper">
+                        <div class="row">
                             <div class="col s2">
                                 <!-- notice the "circle" class -->
                                 <a href="profile.php?user_id=<?php echo $user_id?>"><img style="height:50px !important;width:50px !important"
@@ -104,7 +104,11 @@
                                 <span class="black-text">
                                     <a id="downOwner" href="profile.php?user_id=<?php echo $user_id?>">
                                         <?php echo $fullname ?></a>
+                                   
                                 </span>
+                            </div>
+                            <div style="text-align:center" class="col s12">
+                                <span class="white-text"><?php echo uploadedCount($user_id)?> wallpapers</span>
                             </div>
                         </div>
                     </div>

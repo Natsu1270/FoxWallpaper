@@ -7,19 +7,19 @@
         if(isset($_SESSION['user_id'])){
             $current_user=$_SESSION['user_id'];
         }
-        $but="";
-        if(!$islog){
-            $but="onclick='golog()'";
-        }
         
-        $query="SELECT * FROM cms.image WHERE Cat_id=$Cat_id";
+        $query="SELECT * FROM cms.image WHERE Cat_id=$Cat_id ORDER BY Date_upload DESC";
         $query_res=mysqli_query($conn,$query);
         if(!$query_res){
             die('show wallpaper by category failed.' .mysqli_error($conn));
         }
         
         while($row=mysqli_fetch_assoc($query_res)){
-            
+            $owner=$row['Owner'];
+            $downNum=$row['DownNum'];
+            $loveNum=$row['Like_count'];
+            $cmtNum=$row['CmtNum'];
+            $dateupload=$row['Date_upload'];
             $canBookmark=true;
             $canLove=true;
             $wallpaper=$row['Wallpaper'];
@@ -78,6 +78,17 @@
                         <i class="material-icons">bookmark_border</i>
                     </button>
                     <a class="modal-trigger" href="download_dialog.php?ID=<?php echo $wallpaper_id?>" target="_blank"><img style="z-index:1 !important" src="images/<?php echo $wallpaper?>" class="z-depth-2 responsive-img card"></a>
+                    <div class="info card">
+                        <div style="text-align:center" class="row">
+                            <div style="text-align:center" class="col s12">
+                                <h5><?php echo $owner ?></h5>
+                            </div>
+                            
+                            <div class="col s4"><i class="material-icons">file_download</i><?php echo $downNum?></div>
+                            <div class="col s4"><i class="material-icons">favorite_border</i><?php echo $loveNum?></div>
+                            <div class="col s4"><i class="material-icons">comment</i><?php echo $cmtNum?></div>
+                        </div>
+                    </div>
                 </div>
         <?php $index=$index+1;     
         }
@@ -166,7 +177,11 @@
             die('show wallpaper by category failed.' .mysqli_error($conn));
         }
         while($row=mysqli_fetch_assoc($query_res)){
-            
+            $owner=$row['Owner'];
+            $downNum=$row['DownNum'];
+            $loveNum=$row['Like_count'];
+            $cmtNum=$row['CmtNum'];
+            $dateupload=$row['Date_upload'];
             $canBookmark=true;
             $canLove=true;
             $wallpaper=$row['Wallpaper'];
@@ -225,6 +240,17 @@
                         <i class="material-icons">bookmark_border</i>
                     </button>
                     <a class="modal-trigger" href="download_dialog.php?ID=<?php echo $wallpaper_id?>" target="_blank"><img style="z-index:1 !important" src="images/<?php echo $wallpaper?>" class="z-depth-2 responsive-img card"></a>
+                    <div class="info card">
+                        <div style="text-align:center" class="row">
+                            <div style="text-align:center" class="col s12">
+                                <h5><?php echo $owner ?></h5>
+                            </div>
+                            
+                            <div class="col s4"><i class="material-icons">file_download</i><?php echo $downNum?></div>
+                            <div class="col s4"><i class="material-icons">favorite_border</i><?php echo $loveNum?></div>
+                            <div class="col s4"><i class="material-icons">comment</i><?php echo $cmtNum?></div>
+                        </div>
+                    </div>
                 </div>
         <?php $index2=$index2+1;     
         }
@@ -298,6 +324,118 @@
                     <a class="modal-trigger" href="download_dialog.php?ID=<?php echo $wallpaper_id?>" target="_blank"><img style="z-index:2 !important" src="images/<?php echo $wallpaper?>" class="z-depth-2 responsive-img card"></a>
                 </div>
         <?php $index3=$index3+1;     
+        }
+    }
+function uploadedCount($user_id)
+{
+    global $conn;
+    $res=mysqli_query($conn,"select user.upload_count from cms.user where user_id=$user_id");
+    if(!$res){
+        die("find upcount fail ".mysqli_error($conn));
+    }
+    $row=mysqli_fetch_assoc($res);
+    $upload_count=$row['upload_count'];
+    return $upload_count;
+}
+
+$index4=0;
+    function showWallByPlusOption($option,$islog){
+        global $index4;
+        global $conn;
+        $current_user=-100;
+        if(isset($_SESSION['user_id'])){
+            $current_user=$_SESSION['user_id'];
+        }
+        if($option=="down"){
+            $query="SELECT * FROM cms.image ORDER BY DownNum DESC LIMIT 5";
+        }else if($option=="love"){
+            $query="SELECT * FROM cms.image ORDER BY Like_count DESC LIMIT 5";
+        }else if($option=="cmt"){
+            $query="SELECT * FROM cms.image ORDER BY CmtNum DESC LIMIT 5";
+        }
+        
+        $query_res=mysqli_query($conn,$query);
+        if(!$query_res){
+            die('show wallpaper by category failed.' .mysqli_error($conn));
+        }
+        
+        while($row=mysqli_fetch_assoc($query_res)){
+            $owner=$row['Owner'];
+            $downNum=$row['DownNum'];
+            $loveNum=$row['Like_count'];
+            $cmtNum=$row['CmtNum'];
+            $dateupload=$row['Date_upload'];
+            $canBookmark=true;
+            $canLove=true;
+            $wallpaper=$row['Wallpaper'];
+            $wallpaper_id=$row['ID'];
+            $bmquery="select * from cms.bookmark where b_wallid=$wallpaper_id";
+            $lovequery="select * from cms.love where wallpaper_id=$wallpaper_id";
+
+            $bmres=mysqli_query($conn,$bmquery);
+            if(!$bmres){
+                die("bookmark fail ".mysqli_error($conn));
+            }
+            while($row=mysqli_fetch_assoc($bmres)){
+                $bmuser_id=$row['b_userid'];
+                if($bmuser_id==$current_user){
+                    $canBookmark=false;
+                    break;
+                }
+            }
+            $bkmStyle="";
+            if(!$canBookmark){
+                $bkmStyle="style='background-color:red !important'";
+            }
+
+            $loveres=mysqli_query($conn,$lovequery);
+            if(!$loveres){
+                die("lovequery fail ".mysqli_error($conn));
+            }
+            while($row=mysqli_fetch_assoc($loveres)){
+                $loveuser_id=$row['user_id'];
+                if($loveuser_id==$current_user){
+                    $canLove=false;
+                    break;
+                }
+            }
+            $loveclass="";
+            if($canLove){
+                $loveclass='class="cardbut btn purple c1"';
+            }else{
+                $loveclass='class="cardbut btn redz c1"';
+            }
+            $bmclass="";
+            if($canBookmark){
+                $bmclass='class="cardbut btn purple c2"';
+            }else{
+                $bmclass='class="cardbut btn redz c2"';
+            }
+            if($islog==false){
+                $islog=0;
+            }
+            ?>
+                <div class="col wall-card">
+                    <button id="lovebut<?php echo $index4?>" onclick="love(<?php echo $islog ?>,<?php echo $current_user?>,<?php echo $wallpaper_id?>,this.id)"  <?php echo $loveclass?>>
+                        <i class="material-icons">favorite_border</i>
+                    </button>
+                    <button id="bookbut<?php echo $index4?>" onclick="bookmark(<?php echo $islog ?>,<?php echo $current_user?>,<?php echo $wallpaper_id?>,this.id)"  <?php echo $bmclass?>>
+                        <i class="material-icons">bookmark_border</i>
+                    </button>
+                    <a class="modal-trigger" href="download_dialog.php?ID=<?php echo $wallpaper_id?>" target="_blank"><img style="z-index:1 !important" src="images/<?php echo $wallpaper?>" class="z-depth-2 responsive-img card"></a>
+                    <div class="info card">
+                        <div style="text-align:center" class="row">
+                            <div style="text-align:center" class="col s12">
+                                <h5><?php echo $owner ?></h5>
+                            </div>
+                            
+                            <div class="col s4"><i class="material-icons">file_download</i><?php echo $downNum?></div>
+                            <div class="col s4"><i class="material-icons">favorite_border</i><?php echo $loveNum?></div>
+                            <div class="col s4"><i class="material-icons">comment</i><?php echo $cmtNum?></div>
+                        </div>
+                    </div>
+                </div>
+        <?php $index4=$index4+1;     
         }
     }
 
