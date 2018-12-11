@@ -14,8 +14,7 @@ include "includes/header.php";
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Welcome to admin dashboard
-                            <small>Natsu</small>
+                           Users manager
                         </h1>
                         <div class="col-xs-12">
                             <?php

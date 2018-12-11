@@ -111,25 +111,22 @@ function allComment()
     if(!$query_res){
         die("Query failed ");
     }else{
-        while($row=mysqli_fetch_row($query_res)){
-        $query="select * from posts where id=$row[1]";
-        $p_res=mysqli_query($conn,$query);
-        while($p_row=mysqli_fetch_assoc($p_res)){
-            $post_id=$p_row['id'];
-            $post_title=$p_row['title'];
+        while($row=mysqli_fetch_assoc($query_res)){
+            $id=$row['id'];$wallpaper_id=$row['wallpaper_id'];
+            $user_id=$row['user_id']; $username=$row['username'];
+            $content=$row['content']; $date=$row['date'];
+            echo "<td>$id</td>";
+            echo "<td>$wallpaper_id</td>";
+            echo "<td>$user_id</td>";
+            echo "<td>$username</td>";
+            echo "<td>$content</td>";
+            echo "<td>$date</td>";
+            echo "<td><a class='btn btn-danger' href='comments.php?delete=$id'>Delete</td>";
+            echo "<td><a class='btn btn-primary' href='http://localhost/ltw/download_dialog.php?ID=$wallpaper_id' target='_blank'>{$wallpaper_id}</td>";
+            echo "</tr>";
         }
-        echo "<tr>";
-        for($i=0;$i<count($row);$i++){
-                echo "<td>{$row[$i]}</td>";
-        }
-        echo "<td><a class='btn btn-success' href='comments.php?approve={$row[0]}'>Approve</a>
-        <a class='btn btn-success' href='comments.php?disapprove={$row[0]}'>Disapprove</a>
-        </td>";
-        echo "<td><a class='btn btn-danger' href='comments.php?delete=$row[0]'>Delete</td>";
-        echo "<td><a class='btn btn-primary' href='../post.php?p_id=$post_id'>{$post_title}</td>";
-        echo "</tr>";
-        }
-    }                            
+        
+    }                          
 }
 function fieldnameUser()
 {

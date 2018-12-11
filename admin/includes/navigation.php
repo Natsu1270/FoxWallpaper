@@ -60,9 +60,6 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> Profile</a>
-                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
