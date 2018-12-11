@@ -20,8 +20,8 @@ if(!isset($_SESSION['logged'])){
             <!-- Tab area category-->
             <div class="tabmenu">
                 <ul class="tabs tabs-fixed-width" style="background-color:#5e308a">
-                    <li class="tab col s2"><a class="active" href="#3d">3D Abstract</a></li>
-                    <li class="tab col s2"><a href="#anime">Anime</a></li>
+                    <li class="tab col s2"><a href="#3d">3D Abstract</a></li>
+                    <li class="tab col s2"><a class="active" href="#anime">Anime</a></li>
                     <li class="tab col s2"><a href="#bike">Bike</a></li>
                     <li class="tab col s2"><a href="#landscape">Landscape</a></li>
                     <li class="tab col s2"><a href="#girl">Girl</a></li>

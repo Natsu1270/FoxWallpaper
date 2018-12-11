@@ -1,4 +1,5 @@
 <?php include"database_connect.php";
+include "WallpaperHelper.php";
 session_start();
 if(isset($_POST['lovepurple'])){
     $user_id=$_POST['user_id'];
@@ -8,11 +9,13 @@ if(isset($_POST['lovepurple'])){
     if(!$query_res){
         die("add love failed ".mysqli_error($conn));
     }else{
-        $query="update cms.image set Like_count=Like_count+1 where ID=$wallpaper_id";
-        $query_res=mysqli_query($conn,$query);
-        if(!$query_res){
+        $query2="update cms.image set Like_count=Like_count+1 where ID=$wallpaper_id";
+        $query_res2=mysqli_query($conn,$query2);
+        if(!$query_res2){
             die("add love failed ".mysqli_error($conn));
-        } 
+        }else{
+            echo getImageInfo($wallpaper_id);
+        }
     }
 }else if(isset($_POST['lovered'])){
     $user_id=$_POST['user_id'];
@@ -22,11 +25,13 @@ if(isset($_POST['lovepurple'])){
     if(!$query_res){
         die("remove love failed ".mysqli_error($conn));
     }else{
-        $query="update cms.image set Like_count=Like_count-1 where ID=$wallpaper_id";
-        $query_res=mysqli_query($conn,$query);
-        if(!$query_res){
-            die("add love failed ".mysqli_error($conn));
-        } 
+        $query2="update cms.image set Like_count=Like_count-1 where ID=$wallpaper_id";
+        $query_res2=mysqli_query($conn,$query2);
+        if(!$query_res2){
+            die("decrease love failed ".mysqli_error($conn));
+        }else{
+            echo getImageInfo($wallpaper_id);
+        }
     }
 }
 

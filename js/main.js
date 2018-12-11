@@ -124,7 +124,10 @@ function searchUser() {
 }
 
 function golog() {
-    window.location.href = "http://localhost/ltw/login.php";
+    window.open(
+        "http://localhost/ltw/login.php",
+        '_blank' // <- This is what makes it open in a new window.
+      );
 }
 
 function getWallpaper(id) {
@@ -183,11 +186,13 @@ function downNum(id) {
 }
 
 function love(islog, uid, wid,bid) {
-    
+    var lovebut=$("#"+bid);
+    var incardlovebut=$("#count"+bid);
+   
     if (!islog) {
         return golog();
     } else {
-        var lovebut=$("#"+bid);
+       
         if (lovebut.hasClass("purple")) {
             $.ajax({
                 type: "POST",
@@ -200,7 +205,7 @@ function love(islog, uid, wid,bid) {
                 success: function (response) {
                     lovebut.removeClass('purple');
                     lovebut.addClass('redz');
-                    
+                    incardlovebut.html(response);
                 }
             })
         } else if (lovebut.hasClass('redz')) {
@@ -213,8 +218,10 @@ function love(islog, uid, wid,bid) {
                     wallpaper_id: wid
                 },
                 success: function (response) {
+                    console.log(response);
                     lovebut.removeClass('redz');
                     lovebut.addClass('purple');
+                    incardlovebut.html(response);
                 }
             })
         }

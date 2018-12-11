@@ -1,5 +1,7 @@
 <?php include"include/database_connect.php"; 
-
+require 'include/PHPMailer/src/Exception.php';
+require 'include/PHPMailer/src/PHPMailer.php';
+require 'include/PHPMailer/src/SMTP.php';
 //sign up done-successful alert to user.
 if(isset($_POST["signup"])){
     $username=$_POST["username"];
@@ -8,16 +10,55 @@ if(isset($_POST["signup"])){
     $email=$_POST["email"];
     $status="unactived";
     $avatar="";
-    $insert_query="INSERT INTO cms.user(username,password,role,email,avatar,status) VALUES('{$username}','{$password}','{$role}','{$email}','{$avatar}','{$status}')";
+    //verify
+    $verificationCode = md5(uniqid("natsu", true));
+    $verificationLink = "http://localhost/ltw/activate.php?code=" . $verificationCode;
+
+    $insert_query="INSERT INTO cms.user(username,password,role,email,avatar,active_code,status) 
+        VALUES('{$username}','{$password}','{$role}','{$email}','{$avatar}','{$verificationCode}','{$status}')";
     $insert_result=mysqli_query($conn,$insert_query);
     if(!$insert_result){
         die("Insert user failed ".mysqli_error($conn));
-        unset($_POST);
     }else{
-        echo '<div style="text-align:center" class="alert alert-success" role="alert">
-                Your account has been created, please check your <a href="http://www.gmail.com">email</a> to complete sign up!
-            </div> <meta http-equiv="refresh" content="3;url=index.php" />';
-        unset($_POST);
+        $mail = new PHPMailer\PHPMailer\PHPMailer();                      // Passing `true` enables exceptions
+        try {
+            //Server settings
+            $mail->SMTPDebug = 0;                                 // Enable verbose debug output
+            $mail->isSMTP();                                      // Set mailer to use SMTP
+            $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+            $mail->SMTPAuth = true;                               // Enable SMTP authentication
+            $mail->Username = 'hungduy1270@gmail.com';                 // SMTP username
+            $mail->Password = 'Zxzx1212';                           // SMTP password
+            $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+            $mail->Port = 25;                                    // TCP port to connect to
+
+            //Recipients
+            $mail->setFrom($email, 'FoxWallpaper');
+            $mail->addAddress('littlenaruto96@gmail.com', 'Joe User');     // Add a recipient
+            // $mail->addAddress('ellen@example.com');               // Name is optional
+            // $mail->addReplyTo('info@example.com', 'Information');
+            // $mail->addCC('cc@example.com');
+            // $mail->addBCC('bcc@example.com');
+
+            //Attachments
+            // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+            // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+            //Content
+            $mail->isHTML(true);                                  // Set email format to HTML
+            $mail->Subject = 'Fox wallpaper activation for new account';
+            $mail->Body    = 'Wellcome to Fox Wallpaper ! Please click link below to finish registering.<br>';
+            $mail->Body.= "<a href='{$verificationLink}' target='_blank' style='font-weight:bold;'>VERIFY EMAIL</a><br /><br /><br />";
+            $mail->send();
+            echo "<div style='text-align:center;height:100px;background-color:purple'>
+                    <div style='color:white;font-size:30px'>Please check your email to complete register to Fox Wallpaper</div>
+            </div>";
+            echo '<meta http-equiv="refresh" content="3;url=http://localhost/ltw" />';
+            } 
+            catch (Exception $e) {
+                echo 'Message could not be sent.';
+                echo 'Mailer Error: ' . $mail->ErrorInfo;
+        }
     }
 }
 

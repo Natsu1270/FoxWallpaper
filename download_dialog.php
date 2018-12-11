@@ -72,10 +72,15 @@
                             <h5 style="color:purple !important"><b>Related Wallpapers</b></h5>
                            
                             <div class="carousel">
-                                <?php 
-                                $tagarr=explode(",",$Tag);
-                                $keyword=$tagarr[rand(0,3)];
-                                
+                                <?php
+                                $searchString=",";
+                                if( strpos($Tag, $searchString) !== false){
+                                    $tagarr=explode(",",$Tag);
+                                    $keyword=$tagarr[0];
+                                }else{
+                                    $keyword=$Tag;
+                                } 
+                                echo $keyword;
                                 $query="SELECT * FROM cms.image WHERE Tag LIKE '%$keyword%' AND ID!=$wallpaper_id LIMIT 5";
                                 $relate=mysqli_query($conn,$query);
                                 if(!$relate){
@@ -123,7 +128,7 @@
                                 </div>
                                 <div class="col s4">
                                     <a href="" class="btn blue"><i class="material-icons">favorite</i></a>
-                                    <p>
+                                    <p id="dd<?php echo $wallpaper_id?>">
                                         <?php echo $Like_count ?>
                                     </p>
                                 </div>

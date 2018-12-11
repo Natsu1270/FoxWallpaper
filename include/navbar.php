@@ -107,7 +107,6 @@
                             <i class="large material-icons">mode_edit</i>
                         </a>
                         <ul>
-                            <li><a href="#" class="fullscreen btn-floating black"><i class="material-icons">fullscreen</i></a></li>
                             <li><a href="profile.php" class="btn-floating red"><i class="material-icons">face</i></a></li>
                             <li><a href="collection.php" class="btn-floating yellow darken-1"><i class="material-icons">collections</i></a></li>
                             <li><a href="#upload_modal" class="modal-trigger btn-floating green"><i class="material-icons">publish</i></a></li>

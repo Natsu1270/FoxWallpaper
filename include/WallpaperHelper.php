@@ -1,4 +1,5 @@
 <?php 
+    /* Function for display wallpapers in main page */
     $index=0;
     function showWallByCate($Cat_id,$islog){
         global $index;
@@ -84,19 +85,15 @@
                                 <h5><?php echo $owner ?></h5>
                             </div>
                             
-                            <div class="col s4"><i class="material-icons">file_download</i><?php echo $downNum?></div>
-                            <div class="col s4"><i class="material-icons">favorite_border</i><?php echo $loveNum?></div>
-                            <div class="col s4"><i class="material-icons">comment</i><?php echo $cmtNum?></div>
+                            <div class="col s4"><i class="material-icons">file_download</i> <?php echo $downNum?></div>
+                            <div class="col s4"><i class="material-icons">favorite_border</i> <span id="countlovebut<?php echo $index?>"><?php echo $loveNum?></span></div>
+                            <div class="col s4"><i class="material-icons">comment</i> <?php echo $cmtNum?></div>
                         </div>
                     </div>
                 </div>
         <?php $index=$index+1;     
         }
     }
-
-
-
-
 
     function resultCount($Cat_id,$keyword){
         global $conn;
@@ -246,9 +243,9 @@
                                 <h5><?php echo $owner ?></h5>
                             </div>
                             
-                            <div class="col s4"><i class="material-icons">file_download</i><?php echo $downNum?></div>
-                            <div class="col s4"><i class="material-icons">favorite_border</i><?php echo $loveNum?></div>
-                            <div class="col s4"><i class="material-icons">comment</i><?php echo $cmtNum?></div>
+                            <div class="col s4"><i class="material-icons">file_download</i> <?php echo $downNum?></div>
+                            <div class="col s4"><i class="material-icons">favorite_border</i><span id="countlovebut<?php echo $index2?>"> <?php echo $loveNum?></div>
+                            <div class="col s4"><i class="material-icons">comment</i> <?php echo $cmtNum?></div>
                         </div>
                     </div>
                 </div>
@@ -429,14 +426,29 @@ $index4=0;
                                 <h5><?php echo $owner ?></h5>
                             </div>
                             
-                            <div class="col s4"><i class="material-icons">file_download</i><?php echo $downNum?></div>
-                            <div class="col s4"><i class="material-icons">favorite_border</i><?php echo $loveNum?></div>
-                            <div class="col s4"><i class="material-icons">comment</i><?php echo $cmtNum?></div>
+                            <div class="col s4"><i class="material-icons">file_download</i> <?php echo $downNum?></div>
+                            <div class="col s4"><i class="material-icons">favorite_border</i> <span id="countlovebut<?php echo $index4?>"> <?php echo $loveNum?></div>
+                            <div class="col s4"><i class="material-icons">comment</i> <?php echo $cmtNum?></div>
                         </div>
                     </div>
                 </div>
         <?php $index4=$index4+1;     
         }
+    }
+
+
+    function getImageInfo($wallpaper_id){
+        global $conn;
+        $query="select * from cms.image where ID=$wallpaper_id";
+        $res=mysqli_query($conn,$query);
+        if(!$res){
+            die("fail in find wallpaper");
+        }else{
+            while($row=mysqli_fetch_assoc($res)){
+                $numlove= $row['Like_count'];
+            }
+        }
+        return $numlove;
     }
 
 ?>
