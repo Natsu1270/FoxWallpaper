@@ -148,9 +148,15 @@ function allUser()
             die("Query failed". mysqli_error($conn));
         }else{
             while($row=mysqli_fetch_row($query_res)){
-                $status=$row[count($row)-1];
+                $status=$row[count($row)-3];
                 echo "<tr>";
                 for($i=0;$i<count($row);$i++){
+                    if($i==2){
+                        continue;
+                    }
+                    if($i==11){
+                        continue;
+                    }
                     if($i==9){
                         echo "<td><img class='img-responsive' src='../images/avatar/{$row[$i]}'></td>";
                     }else{
@@ -175,4 +181,38 @@ function confirmQuery($res){
     if(!$res){
         die('Query failed');
     }
+}
+
+function metric()
+{
+    global $conn;
+    $metric_detail=array();
+    $res=mysqli_query($conn,"select count(*) from cms.user where status=''");
+    if(!$res){
+        die("count user failed ".mysqli_error($conn));
+    }
+    $row=$res->fetch_row();
+    $metric_detail['user_count']=$row[0];
+    $img_res=mysqli_query($conn,"select count(*) from cms.image");
+    if(!$img_res){
+        die("count image failed ".mysqli_error($conn));
+    }
+    $img_row=$img_res->fetch_row();
+    $metric_detail['img_count']=$img_row[0];
+
+    $cmt_res=mysqli_query($conn,"select count(*) from cms.comment");
+    if(!$cmt_res){
+        die("count comment failed ".mysqli_error($conn));
+    }
+    $cmt_row=$cmt_res->fetch_row();
+    $metric_detail['cmt_count']=$cmt_row[0];
+
+    $category_res=mysqli_query($conn,"select count(*) from cms.category");
+    if(!$category_res){
+        die("count image failed ".mysqli_error($conn));
+    }
+    $category_row=$category_res->fetch_row();
+    $metric_detail['category_count']=$category_row[0];
+
+    return $metric_detail;
 }

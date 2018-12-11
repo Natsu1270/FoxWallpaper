@@ -27,6 +27,7 @@
             $user_id=$row['user_id'];
             $user_ava=$row['avatar'];
             $fullname=$row['fullname'];
+            $ownername=$row['username'];
         }
     }
 ?>
@@ -36,6 +37,19 @@
         <?php include"include/navbar.php" ?>
         <!-- Tab area -->
     </header>
+    <!-- <div class="preloader-background">
+        <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+            <div class="circle"></div>
+            </div><div class="gap-patch">
+            <div class="circle"></div>
+            </div><div class="circle-clipper right">
+            <div class="circle"></div>
+            </div>
+        </div>
+        </div>
+    </div> -->
     <main>
         <div class="container">
             <div class="row">
@@ -113,7 +127,7 @@
                                 </span>
                             </div>
                             <div style="text-align:center" class="col s12">
-                                <span class="white-text"><?php echo uploadedCount($user_id)?> wallpapers</span>
+                                <a style="text-decoration:underline" href="http://localhost/ltw/ownerwallpaper.php?name=<?php echo $ownername?>"><span class="white-text"><?php echo uploadedCount($user_id)?> wallpapers</span></a>
                             </div>
                         </div>
                     </div>

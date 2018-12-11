@@ -726,18 +726,11 @@ html { overflow-y: scroll !important; }
   opacity: 1 !important;
   z-index:20;
 }
-
-/* Preloader */
-.preloader-background {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color:whitesmoke !important;
-	
-	position: fixed;
-	z-index: 100;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;	
+.admin-logo{
+  width:39px;
+  height:65px;
+}
+.side-item{
+  font-size:15px;
+  font-family: 'Comfortaa', cursive;
 }

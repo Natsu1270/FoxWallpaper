@@ -47,8 +47,17 @@ if(isset($_POST['create_user'])){
 <table class="table table-dark table-bordered table-hover table-striped">
     <thead class="thead-dark">
         <tr>
-            <?php 
-            fieldnameUser(); ?>
+            <th>user_id</th>
+            <th>username</th>
+            <th>fullname</th>
+            <th>birthday</th>
+            <th>gender</th>
+            <th>about</th>
+            <th>role</th>
+            <th>email</th>
+            <th>avatar</th>
+            <th>status</th>
+            <th>uploaded</th>
         </tr>
     </thead>
     <tbody>

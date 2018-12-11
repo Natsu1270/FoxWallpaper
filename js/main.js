@@ -1,18 +1,14 @@
 $(document).ready(function () {
-    // comment with ajax
-    // $("#cmt-form").on('submit',function(){
-    //     $.ajax({
-    //         type:"post",
-    //         data:{
-
-    //         }
-    //     })
-    // })
+    // date time picker
+    
+    //related wallpaper
     $('.carousel').carousel({
         indicators: true
     });
 
+    // comment character count
     $('input#input_text, textarea#textarea2').characterCounter();
+
     // edit profile with ajax
     $('select').formSelect();
     $("#password_edit").on('keyup', () => {
@@ -23,11 +19,17 @@ $(document).ready(function () {
         } else if (pass.length < 4) {
             $(".editpasshelper").html("Password must have at least 4 character!");
         }
-    })
-    $('.datepicker').datepicker({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 15 // Creates a dropdown of 15 years to control year
     });
+    $('.datepicker').datepicker({
+        container:'body',
+        format:'yyyy/mm/dd',
+        showClearBtn:true,
+        yearRange:[1970,2018]
+    });
+    // $('.datepicker').datepicker({
+    //     selectMonths: true, // Creates a dropdown to control month
+    //     selectYears: 15 // Creates a dropdown of 15 years to control year
+    // });
     $('select').formSelect();
     $('.modal').modal({
         opacity: 0.6
@@ -63,6 +65,7 @@ $(document).ready(function () {
         constrainWidth: false
 
     });
+    
     $('.tabs').tabs({
         swipeable: false,
         responsiveThreshold: 1920
@@ -99,7 +102,8 @@ function editProfile(usr_id) {
             password: $("#password_edit").val(),
             about: $("#textarea1").val(),
             email: $("#email").val(),
-            gender: $("#gender").val()
+            gender: $("#gender").val(),
+            birthday:$("#birthday").val()
         },
         success: function (result) {
             window.location.href = "http://localhost/ltw/profile.php?" + result;
@@ -266,3 +270,11 @@ function bookmark(islog, uid, wid,bid) {
     }
 
 }
+
+document.addEventListener("DOMContentLoaded", function(){
+	$('.preloader-background').delay(1000).fadeOut('slow');
+	
+	$('.preloader-wrapper')
+		.delay(1000)
+		.fadeOut();
+});

@@ -40,6 +40,19 @@ if(isset($_GET['user_id'])){
 
 ?>
 <body>
+<!-- <div class="preloader-background">
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+</div> -->
 <!-- Modal upload iamge Structure -->
 <div id="upload_modal2" class="modal">
     <div class="modal-content">
@@ -113,6 +126,10 @@ if(isset($_GET['user_id'])){
                     <div style="color:white !important" class="input-field col s12">
                         <textarea type="text" value="<?php echo $about ?>" style="color:white !important" id="textarea1" class="materialize-textarea"><?php echo $about ?> </textarea>
                         <label style="color:white !important" for="textarea1">About</label>
+                    </div>
+                    <div class="col s12">
+                        <input style="color:white !important" type="text" id="birthday" name="birthday" class="datepicker">
+                        <label style="color:white !important" for="datepicker">Birthday</label>
                     </div>
                 </div>
             </form>
@@ -276,7 +293,7 @@ if(isset($_GET['user_id'])){
                         <div class="divider"></div>
                         <p><i class="material-icons">email</i> Email: <?php echo $email?></p>
                         <div class="divider"></div>
-                        <p><i class="material-icons">date_range</i> Birthday: <?php echo $birthday?></p>
+                        <p><i class="material-icons">date_range</i> Birthday: <span id="pbd"><?php echo $birthday?></span></p>
                     </div>
                 </div>
                 <div class="col s12 m5 ">
@@ -284,7 +301,7 @@ if(isset($_GET['user_id'])){
                         <?php 
                             $upload_count=uploadedCount($user_id);
                         ?>
-                        <h5>Uploaded: <?php echo $upload_count?> wallpapers</h5>;
+                        <h5>Uploaded: <a style="text-decoration:underline" href="http://localhost/ltw/ownerwallpaper.php?name=<?php echo $username?>"><?php echo $upload_count?> wallpapers</a></h5>;
                     </div>
                 </div>
             </div>

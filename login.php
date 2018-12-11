@@ -8,6 +8,14 @@ $_SESSION['logged']=false;
 if(isset($_POST['login'])){
     $log_username=mysqli_real_escape_string($conn,$_POST['your_name']);
     $log_password=mysqli_real_escape_string($conn,$_POST['your_pass']);
+
+    if($_POST['remember-me']=="checked"){
+        setcookie('username',$log_username,time()+3600);
+        setcookie('password',$log_password,time()+3600);
+    }else{
+        unset($_COOKIE['username']);
+        unset($_COOKIE['password']);
+    }
     $query="select * from cms.user where username='{$log_username}'";
     $login_res=mysqli_query($conn,$query);
     if(!$login_res){
@@ -25,7 +33,7 @@ if(isset($_POST['login'])){
             $role=$row['role'];
             $gender=$row['gender'];
             $status=$row['status'];
-            if($log_password!==$password || $log_username!==$username){
+            if(!password_verify($log_password,$password) || $log_username!==$username){
                 header("Location: login.php?error_code=1");
             }else if($status=='unactived'){  // check if user has been activated.
                 header("Location: login.php?error_code=2");
@@ -117,14 +125,16 @@ if(isset($_POST['login'])){
                         <form method="POST" action="" class="register-form" id="login-form">
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input required type="text" name="your_name" id="your_name" placeholder="Your Name"/>
+                                <input required type="text" name="your_name" id="your_name" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>" placeholder="Your Name"/>
                             </div>
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input required type="password" name="your_pass" id="your_pass" placeholder="Password"/>
+                                <input required type="password" name="your_pass" id="your_pass" value="<?php if(isset($_COOKIE["password"])) { echo $_COOKIE["password"]; } ?>" placeholder="Password"/>
                             </div>
                             <div class="form-group">
-                                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" value="checked"
+                                <?php if(isset($_COOKIE["username"])) { ?> checked
+                                <?php } ?>/>
                                 <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
                             </div>
                             <div class="form-group form-button">

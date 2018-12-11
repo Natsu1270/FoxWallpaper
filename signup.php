@@ -5,7 +5,8 @@ require 'include/PHPMailer/src/SMTP.php';
 //sign up done-successful alert to user.
 if(isset($_POST["signup"])){
     $username=$_POST["username"];
-    $password=$_POST["pass"];
+    $raw_password=$_POST["pass"];
+    $password=password_hash($raw_password,PASSWORD_DEFAULT);
     $role="user";
     $email=$_POST["email"];
     $status="unactived";
