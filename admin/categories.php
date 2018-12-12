@@ -78,7 +78,7 @@ include "includes/header.php";
                                         ?>
 
                                     </div>
-                                        <input type="submit" name="edit" value="Edit category" class="btn btn-info">
+                                        <input id="editcat" type="submit" name="edit" value="Edit category" class="btn btn-info">
                                         
                                     <div class="form-group"></div>
                                 </form>

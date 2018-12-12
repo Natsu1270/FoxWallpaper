@@ -253,3 +253,10 @@ ul.alert-dropdown {
    width: 100%;
    height: 160px;
 }
+
+.showedit{
+    display: block;
+}
+.hideedit{
+    display: none;
+}

@@ -16,13 +16,13 @@
                     <label style="color:white !important"><b>Category</b></label>
                 </div>
                 <div class="input-field col s12">
-                    <input style="color:white !important"  id="upload_tag" type="text" name="tag" class="validate">
+                    <input required style="color:white !important"  id="upload_tag" type="text" name="tag" class="validate">
                     <label style="color:white !important"  for="upload_tag">Tags</label>
                 </div>
                 <div class="col s12 file-field input-field">
                     <div class="btn">
                         <span>File</span>
-                        <input style="color:white !important"  name="upload_img" type="file">
+                        <input required style="color:white !important"  name="upload_img" type="file">
                     </div>
                     <div class="file-path-wrapper">
                         <input style="color:white !important"  class="file-path validate" type="text">
@@ -30,6 +30,7 @@
                 </div>
                 <div style="text-align:center !important" class="col s12 file-field input-field">
                     <input type="submit" class="btn" value="Upload" name="upload_submit">
+                    <button style="margin-left:30px" type="reset" value="reset" class="btn"> Reset </button>
                 </div>
             </div>
         </form>

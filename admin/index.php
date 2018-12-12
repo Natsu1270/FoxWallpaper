@@ -18,6 +18,7 @@ include "includes/header.php";
                         </h1>
                     </div>
                     <div class="col-xs-12">
+                        <h2>FoxWallpaper metrics:</h2>
                         <div class="chart">
                             <div class="metric col-4" style="width: 18rem;">
                                 <img class="card-img-top" src="images/user.png"  alt="Card image cap">

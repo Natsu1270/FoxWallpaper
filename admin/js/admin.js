@@ -10,3 +10,9 @@ $(document).ready(function(){
         $("#cat_id").val($(this).val());
     }).change(); 
 })
+
+// function showedit(){
+//     var x=$("#editcat");
+//     x.removeClass('hideedit');
+//     x.addClass('showedit');
+// }

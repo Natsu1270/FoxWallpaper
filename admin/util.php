@@ -47,7 +47,7 @@ function findAllCat()
         echo "<td>{$cat_id}</td>";
         echo "<td>{$cat_title}</td>";
         echo "<td><a href='categories.php?id={$cat_id}' name='del' class='btn btn-danger'>Delete </a>";
-        echo " <a href='categories.php?edit={$cat_id}' name='edit' class='btn btn-warning'>Update</a></td>";
+        echo " <a href='categories.php?edit={$cat_id}' onclick='showedit()' name='edit' class='btn btn-warning'>Update</a></td>";
         echo "</tr>";
     }
 }
