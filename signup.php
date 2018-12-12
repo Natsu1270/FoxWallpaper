@@ -11,12 +11,13 @@ if(isset($_POST["signup"])){
     $email=$_POST["email"];
     $status="unactived";
     $avatar="";
+    $birthday=date('Y-m-d');
     //verify
     $verificationCode = md5(uniqid("natsu", true));
     $verificationLink = "http://localhost/ltw/activate.php?code=" . $verificationCode;
 
-    $insert_query="INSERT INTO cms.user(username,password,role,email,avatar,active_code,status) 
-        VALUES('{$username}','{$password}','{$role}','{$email}','{$avatar}','{$verificationCode}','{$status}')";
+    $insert_query="INSERT INTO cms.user(username,password,role,email,avatar,active_code,birthday,status) 
+        VALUES('{$username}','{$password}','{$role}','{$email}','{$avatar}','{$verificationCode}','{$birthday}','{$status}')";
     $insert_result=mysqli_query($conn,$insert_query);
     if(!$insert_result){
         die("Insert user failed ".mysqli_error($conn));
