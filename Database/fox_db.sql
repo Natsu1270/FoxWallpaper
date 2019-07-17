@@ -85,7 +85,7 @@ CREATE TABLE `user` (
   `about` text NULL,
   `role` varchar(255)  NULL,
   `email` varchar(255) NULL,
-  `avatar` varchar(255) NOT NULL DEFAULT 'fox.png',
+  `avatar` varchar(255) NULL DEFAULT 'fox.png',
   `status` varchar(255) NULL,
   `active_code` varchar(255) NULL,
   `upload_count` int(3) NOT NULL DEFAULT 0

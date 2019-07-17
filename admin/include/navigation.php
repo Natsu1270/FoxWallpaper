@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="/"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="/admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     
                     <li>
@@ -43,7 +43,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="../admin/categories.php"><i class="fa fa-fw fa-wrench"></i> Categories</a>
+                        <a href="/category"><i class="fa fa-fw fa-wrench"></i> Categories</a>
                     </li>
                     <li class="active">
                         <a href="comments.php"><i class="fa fa-fw fa-file"></i> Comments</a>

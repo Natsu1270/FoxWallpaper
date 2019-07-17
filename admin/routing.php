@@ -31,14 +31,14 @@ if(!strpos($request,'?')){
         case '/search':
             require __DIR__ . "/pages/search_index.php";
             break;
-        case '/admin' :
-            require __DIR__ . '/pages/home.php';
+        case '/collection' :
+            require __DIR__ . '/pages/collection.php';
             break;
         // case '/admin':
         //     require __DIR__ . '/admin/index.php';
         //     break;
-        case '/admin/category' :
-            require __DIR__ . '/categories.php';
+        case '/category' :
+            require __DIR__ . '/admin/categories.php';
             break;
         default:
             require __DIR__ . '/pages/404.php';

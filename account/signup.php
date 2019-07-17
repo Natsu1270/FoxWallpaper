@@ -10,14 +10,14 @@ if(isset($_POST["signup"])){
     $role="user";
     $email=$_POST["email"];
     $status="unactived";
-    $avatar="";
+    // $avatar="";
     $birthday=date('Y-m-d');
     //verify
     $verificationCode = md5(uniqid("natsu", true));
     $verificationLink = "http://localhost:8000/activate?code=" . $verificationCode;
 
-    $insert_query="INSERT INTO user(username,password,role,email,avatar,active_code,birthday,status) 
-        VALUES('{$username}','{$password}','{$role}','{$email}','{$avatar}','{$verificationCode}','{$birthday}','{$status}')";
+    $insert_query="INSERT INTO user(username,password,role,email,active_code,birthday,status) 
+        VALUES('{$username}','{$password}','{$role}','{$email}','{$verificationCode}','{$birthday}','{$status}')";
     $insert_result=mysqli_query($conn,$insert_query);
     if(!$insert_result){
         die("Insert user failed ".mysqli_error($conn));

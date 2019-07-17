@@ -7,14 +7,14 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         $results = mysqli_query($conn,"SELECT * FROM user WHERE username='{$username}'");
         $user_exist=mysqli_num_rows($results);
         if(strlen($username)<3){
-            $msg="username's length must be greater than 3";
+            $msg="Username's length must be greater than 3";
             echo json_encode(array("message"=>$msg,"bgc"=>1));
         }else if(strlen($username)>10){
-            $msg= "username's length must be less than 10";
+            $msg= "Username's length must be less than 10";
             echo json_encode(array("message"=>$msg,"bgc"=>1));
         }
         else if($user_exist){
-            $msg= "username is already token!";
+            $msg= "Username already exists!";
             echo json_encode(array("message"=>$msg,"bgc"=>1));
         }else{
             $msg= "";

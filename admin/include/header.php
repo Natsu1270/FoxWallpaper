@@ -19,14 +19,14 @@ include "util.php";
     <title>FoxWallpaper Administrator Dashboard</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="admin/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="admin/css/sb-admin.css" rel="stylesheet">
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/admin.js"></script>
+    <link href="admin/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script src="admin/js/jquery.js"></script>
+    <script src="admin/js/bootstrap.js"></script>
+    <script src="admin/js/admin.js"></script>
     
 </head>

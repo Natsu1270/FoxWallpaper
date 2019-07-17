@@ -13,9 +13,6 @@ if(!strpos($request,'?')){
         case '/about' :
             require __DIR__ . '/pages/about.php';
             break;
-        case '/admin' :
-            require __DIR__ . '/admin//';
-            break;
         case '/login' :
             require __DIR__ . '/account/login.php';
             break;
@@ -36,6 +33,9 @@ if(!strpos($request,'?')){
             break;
         case '/collection' :
             require __DIR__ . '/pages/collection.php';
+            break;
+        case '/admin':
+            require __DIR__ . '/admin/index.php';
             break;
         default:
             require __DIR__ . '/pages/404.php';
@@ -65,6 +65,8 @@ if(!strpos($request,'?')){
         case '/profile' :
             require __DIR__ . '/account/profile.php';
             break;
+       
+            
         default:
             require __DIR__ . '/pages/404.php';
             break;
