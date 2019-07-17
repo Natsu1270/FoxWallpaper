@@ -1,12 +1,12 @@
 <?php 
-include "includes/header.php";
+include "include/header.php";
 ?>
 
 <body>
     <div id="wrapper">
         <!-- Navigation -->
         <?php
-        include "includes/navigation.php";
+        include "include/navigation.php";
         ?>
         <div id="page-wrapper">
             <div class="container-fluid">
@@ -25,8 +25,8 @@ include "includes/header.php";
                                 <div class="card-body">
                                     <h3 class="card-title">User: <?php echo metric()['user_count']?></h3>
                                     <p class="card-text"></p>
-                                    <a href="http://localhost/ltw/admin/users.php" class="btn btn-danger">View</a>
-                                    <a href="http://localhost/ltw/admin/users.php?source=add_user" class="btn btn-danger">Add</a>
+                                    <a href="http://localhost:8000/admin/users.php" class="btn btn-danger">View</a>
+                                    <a href="http://localhost:8000/admin/users.php?source=add_user" class="btn btn-danger">Add</a>
                                 </div>
                             </div>
 
@@ -35,8 +35,8 @@ include "includes/header.php";
                                 <div class="card-body">
                                     <h3 class="card-title">Wallpaper: <?php echo metric()['img_count']?></h3>
                                     <p class="card-text"></p>
-                                    <a href="http://localhost/ltw/admin/posts.php" class="btn btn-danger">View</a>
-                                    <a href="http://localhost/ltw/admin/posts.php?source=add_post" class="btn btn-danger">Add</a>
+                                    <a href="http://localhost:8000/admin/posts.php" class="btn btn-danger">View</a>
+                                    <a href="http://localhost:8000/admin/posts.php?source=add_post" class="btn btn-danger">Add</a>
                                 </div>
                             </div>
 
@@ -45,7 +45,7 @@ include "includes/header.php";
                                 <div class="card-body">
                                     <h3 class="card-title">Comment: <?php echo metric()['cmt_count']?></h3>
                                     <p class="card-text"></p>
-                                    <a href="http://localhost/ltw/admin/comments.php" class="btn btn-danger">Manage</a>
+                                    <a href="http://localhost:8000/admin/comments.php" class="btn btn-danger">Manage</a>
                                     
                                 </div>
                             </div>
@@ -55,7 +55,7 @@ include "includes/header.php";
                                 <div class="card-body">
                                     <h3 class="card-title">Category: <?php echo metric()['category_count']?></h3>
                                     <p class="card-text"></p>
-                                    <a href="http://localhost/ltw/admin/categories.php" class="btn btn-danger">Manage</a>
+                                    <a href="http://localhost:8000/admin/categories.php" class="btn btn-danger">Manage</a>
                                     
                                 </div>
                             </div>

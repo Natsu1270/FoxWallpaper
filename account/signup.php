@@ -14,9 +14,9 @@ if(isset($_POST["signup"])){
     $birthday=date('Y-m-d');
     //verify
     $verificationCode = md5(uniqid("natsu", true));
-    $verificationLink = "http://localhost/ltw/activate.php?code=" . $verificationCode;
+    $verificationLink = "http://localhost:8000/activate?code=" . $verificationCode;
 
-    $insert_query="INSERT INTO cms.user(username,password,role,email,avatar,active_code,birthday,status) 
+    $insert_query="INSERT INTO user(username,password,role,email,avatar,active_code,birthday,status) 
         VALUES('{$username}','{$password}','{$role}','{$email}','{$avatar}','{$verificationCode}','{$birthday}','{$status}')";
     $insert_result=mysqli_query($conn,$insert_query);
     if(!$insert_result){
@@ -29,8 +29,8 @@ if(isset($_POST["signup"])){
             $mail->isSMTP();                                      // Set mailer to use SMTP
             $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
             $mail->SMTPAuth = true;                               // Enable SMTP authentication
-            $mail->Username = 'hungduy1270@gmail.com';                 // SMTP username
-            $mail->Password = 'Zxzx1212';                           // SMTP password
+            $mail->Username = 'adm.foxwallpaper@gmail.com';                 // SMTP username
+            $mail->Password = '1212qwqw';                           // SMTP password
             $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 25;                                    // TCP port to connect to
 
@@ -55,7 +55,7 @@ if(isset($_POST["signup"])){
             echo "<div style='text-align:center;height:100px;background-color:purple'>
                     <div style='color:white;font-size:30px'>Please check your email to complete register to Fox Wallpaper</div>
             </div>";
-            echo '<meta http-equiv="refresh" content="3;url=http://localhost/ltw" />';
+            echo '<meta http-equiv="refresh" content="3;url=/" />';
             } 
             catch (Exception $e) {
                 echo 'Message could not be sent.';
@@ -145,13 +145,13 @@ if(isset($_POST["signup"])){
                             </div>
                             <div class="form-group form-button">
                                 <input  type="submit" name="signup" id="signup" class="form-submit logbut" value="Register"/>
-                                <a href="index.php" style="text-decoration:none" class="form-submit logbut">Home</a>
+                                <a href="/" style="text-decoration:none" class="form-submit logbut">Home</a>
                             </div>
                         </form>
                     </div>
                     <div class="signup-image">
                         <figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
-                        <a style="color:black !important" href="login.php" class="signup-image-link">I am already member</a>
+                        <a style="color:black !important" href="/login" class="signup-image-link">I am already member</a>
                     </div>
                 </div>
             </div>
@@ -188,7 +188,7 @@ if(isset($_POST["signup"])){
         })
         $("#username").keyup(function(e){
             var username=$(this).val();
-            $.post('signup_validate.php',{'username':username},function(data){
+            $.post('/signup_validate',{'username':username},function(data){
                 var json_res=JSON.parse(data);
                 if(json_res.bgc==0){
                     okname=true;
@@ -204,7 +204,7 @@ if(isset($_POST["signup"])){
 
         $("#email").keyup(function(e){
             var email=$(this).val();
-            $.post('signup_validate.php',{'email':email},function(data){
+            $.post('/signup_validate',{'email':email},function(data){
                 var json_res=JSON.parse(data);
                 if(json_res.error==1){
                     okemail=false;
@@ -233,5 +233,5 @@ if(isset($_POST["signup"])){
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/materialize.min.js"></script>
     <script src="js/main.js"></script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 </html>

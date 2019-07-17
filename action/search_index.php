@@ -58,7 +58,7 @@
                             <p style="color:white !important"><?php echo resultCount($Cat_id,$keyword)?> results</p>
                         </div>
                         <div class="card-action">
-                            <a class="btn" href="index.php">Home</a>
+                            <a class="btn" href="/">Home</a>
 
                         </div>
                     </div>

@@ -2,7 +2,7 @@
  * jQuery JavaScript Library v3.3.1
  * https://jquery.com/
  *
- * Includes Sizzle.js
+ * include Sizzle.js
  * https://sizzlejs.com/
  *
  * Copyright JS Foundation and other contributors
@@ -5444,7 +5444,7 @@ jQuery.Event.prototype = {
 	}
 };
 
-// Includes all common event props including KeyEvent and MouseEvent specific props
+// include all common event props including KeyEvent and MouseEvent specific props
 jQuery.each( {
 	altKey: true,
 	bubbles: true,

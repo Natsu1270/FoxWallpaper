@@ -9,7 +9,7 @@
             $current_user=$_SESSION['user_id'];
         }
         
-        $query="SELECT * FROM cms.image WHERE Cat_id=$Cat_id ORDER BY Date_upload DESC";
+        $query="SELECT * FROM image WHERE Cat_id=$Cat_id ORDER BY Date_upload DESC";
         $query_res=mysqli_query($conn,$query);
         if(!$query_res){
             die('show wallpaper by category failed.' .mysqli_error($conn));
@@ -25,8 +25,8 @@
             $canLove=true;
             $wallpaper=$row['Wallpaper'];
             $wallpaper_id=$row['ID'];
-            $bmquery="select * from cms.bookmark where b_wallid=$wallpaper_id";
-            $lovequery="select * from cms.love where wallpaper_id=$wallpaper_id";
+            $bmquery="select * from bookmark where b_wallid=$wallpaper_id";
+            $lovequery="select * from love where wallpaper_id=$wallpaper_id";
 
             $bmres=mysqli_query($conn,$bmquery);
             if(!$bmres){
@@ -113,15 +113,15 @@
         $query="";
         if($Cat_id==0){
             if(empty($keyword)||$keyword==""||$keyword==null){
-                $query="SELECT * FROM cms.image";
+                $query="SELECT * FROM image";
             }else{
-                $query="SELECT * FROM cms.image WHERE Tag LIKE '%$keyword%'";
+                $query="SELECT * FROM image WHERE Tag LIKE '%$keyword%'";
             }
         }else{
             if(empty($keyword)||$keyword==""||$keyword==null){
-                $query="SELECT * FROM cms.image WHERE Cat_id=$Cat_id";
+                $query="SELECT * FROM image WHERE Cat_id=$Cat_id";
             }else{
-                $query="SELECT * FROM cms.image WHERE Cat_id=$Cat_id AND Tag LIKE '%$keyword%'";
+                $query="SELECT * FROM image WHERE Cat_id=$Cat_id AND Tag LIKE '%$keyword%'";
             }
         }
         $query_res=mysqli_query($conn,$query);
@@ -159,15 +159,15 @@
         $query="";
         if($Cat_id==0){
             if(empty($keyword)||$keyword==""||$keyword==null){
-                $query="SELECT * FROM cms.image";
+                $query="SELECT * FROM image";
             }else{
-                $query="SELECT * FROM cms.image WHERE Tag LIKE '%$keyword%'";
+                $query="SELECT * FROM image WHERE Tag LIKE '%$keyword%'";
             }
         }else{
             if(empty($keyword)||$keyword==""||$keyword==null){
-                $query="SELECT * FROM cms.image WHERE Cat_id=$Cat_id";
+                $query="SELECT * FROM image WHERE Cat_id=$Cat_id";
             }else{
-                $query="SELECT * FROM cms.image WHERE Cat_id=$Cat_id AND Tag LIKE '%$keyword%'";
+                $query="SELECT * FROM image WHERE Cat_id=$Cat_id AND Tag LIKE '%$keyword%'";
             }
         }
         $query_res=mysqli_query($conn,$query);
@@ -184,8 +184,8 @@
             $canLove=true;
             $wallpaper=$row['Wallpaper'];
             $wallpaper_id=$row['ID'];
-            $bmquery="select * from cms.bookmark where b_wallid=$wallpaper_id";
-            $lovequery="select * from cms.love where wallpaper_id=$wallpaper_id";
+            $bmquery="select * from bookmark where b_wallid=$wallpaper_id";
+            $lovequery="select * from love where wallpaper_id=$wallpaper_id";
 
             $bmres=mysqli_query($conn,$bmquery);
             if(!$bmres){
@@ -261,7 +261,7 @@
         global $conn;
         $current_user=$_SESSION['user_id'];
 
-        $query="SELECT * FROM cms.bookmark WHERE b_userid=$current_user";
+        $query="SELECT * FROM bookmark WHERE b_userid=$current_user";
         $query_res=mysqli_query($conn,$query);
         if(!$query_res){
             die('show wallpaper by category failed.' .mysqli_error($conn));
@@ -273,7 +273,7 @@
             $canLove=true;
             // $wallpaper=$row['Wallpaper'];
             $wallpaper_id=$row['b_wallid'];
-            $wall_q="select * from cms.image where ID=$wallpaper_id";
+            $wall_q="select * from image where ID=$wallpaper_id";
             $wall_res=mysqli_query($conn,$wall_q);
             if(!$wall_res){
                 die("wall_q fail ".mysqli_error($conn));
@@ -282,7 +282,7 @@
                 $wallpaper=$row['Wallpaper'];
             }
             
-            $lovequery="select * from cms.love where wallpaper_id=$wallpaper_id";
+            $lovequery="select * from love where wallpaper_id=$wallpaper_id";
             $bkmStyle="";
             if(!$canBookmark){
                 $bkmStyle="style='background-color:red !important'";
@@ -327,7 +327,7 @@
 function uploadedCount($user_id)
 {
     global $conn;
-    $res=mysqli_query($conn,"select user.upload_count from cms.user where user_id=$user_id");
+    $res=mysqli_query($conn,"select user.upload_count from user where user_id=$user_id");
     if(!$res){
         die("find upcount fail ".mysqli_error($conn));
     }
@@ -345,11 +345,11 @@ $index4=0;
             $current_user=$_SESSION['user_id'];
         }
         if($option=="down"){
-            $query="SELECT * FROM cms.image ORDER BY DownNum DESC LIMIT 5";
+            $query="SELECT * FROM image ORDER BY DownNum DESC LIMIT 5";
         }else if($option=="love"){
-            $query="SELECT * FROM cms.image ORDER BY Like_count DESC LIMIT 5";
+            $query="SELECT * FROM image ORDER BY Like_count DESC LIMIT 5";
         }else if($option=="cmt"){
-            $query="SELECT * FROM cms.image ORDER BY CmtNum DESC LIMIT 5";
+            $query="SELECT * FROM image ORDER BY CmtNum DESC LIMIT 5";
         }
         
         $query_res=mysqli_query($conn,$query);
@@ -367,8 +367,8 @@ $index4=0;
             $canLove=true;
             $wallpaper=$row['Wallpaper'];
             $wallpaper_id=$row['ID'];
-            $bmquery="select * from cms.bookmark where b_wallid=$wallpaper_id";
-            $lovequery="select * from cms.love where wallpaper_id=$wallpaper_id";
+            $bmquery="select * from bookmark where b_wallid=$wallpaper_id";
+            $lovequery="select * from love where wallpaper_id=$wallpaper_id";
 
             $bmres=mysqli_query($conn,$bmquery);
             if(!$bmres){
@@ -440,7 +440,7 @@ $index4=0;
 
     function getImageInfo($wallpaper_id){
         global $conn;
-        $query="select * from cms.image where ID=$wallpaper_id";
+        $query="select * from image where ID=$wallpaper_id";
         $res=mysqli_query($conn,$query);
         if(!$res){
             die("fail in find wallpaper");
@@ -460,7 +460,7 @@ function showWallpaperByOwner($owner,$islog){
     if(isset($_SESSION['user_id'])){
         $current_user=$_SESSION['user_id'];
     }
-    $query="select * from cms.image where Owner='$owner'";
+    $query="select * from image where Owner='$owner'";
     
     $query_res=mysqli_query($conn,$query);
     if(!$query_res){
@@ -477,8 +477,8 @@ function showWallpaperByOwner($owner,$islog){
         $canLove=true;
         $wallpaper=$row['Wallpaper'];
         $wallpaper_id=$row['ID'];
-        $bmquery="select * from cms.bookmark where b_wallid=$wallpaper_id";
-        $lovequery="select * from cms.love where wallpaper_id=$wallpaper_id";
+        $bmquery="select * from bookmark where b_wallid=$wallpaper_id";
+        $lovequery="select * from love where wallpaper_id=$wallpaper_id";
 
         $bmres=mysqli_query($conn,$bmquery);
         if(!$bmres){

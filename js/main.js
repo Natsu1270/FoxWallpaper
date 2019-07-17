@@ -79,12 +79,12 @@ $(document).ready(function () {
 
         $.ajax({
             type: "post",
-            url: "http://localhost/LTW/include/search_user.php",
+            url: "http://localhost:8000/include/search_user.php",
             data: {
                 username: $("#search").val()
             },
             success: function (result) {
-                window.location.href = "http://localhost/ltw/profile.php?user_id=" + String(result);
+                window.location.href = "http://localhost:8000/account/profile.php?user_id=" + String(result);
             }
         })
     })
@@ -94,7 +94,7 @@ function editProfile(usr_id) {
     var the_user_id = usr_id;
     $.ajax({
         type: "post",
-        url: "http://localhost/LTW/include/edit_profile.php",
+        url: "http://localhost:8000/include/edit_profile.php",
         data: {
             user_id: the_user_id,
             fullname: $("#fullname").val(),
@@ -106,7 +106,7 @@ function editProfile(usr_id) {
             birthday:$("#birthday").val()
         },
         success: function (result) {
-            window.location.href = "http://localhost/ltw/profile.php?" + result;
+            window.location.href = "http://localhost:8000/account/profile.php?" + result;
         },
         error: function () {
             alert('error!');
@@ -117,19 +117,19 @@ function editProfile(usr_id) {
 function searchUser() {
     $.ajax({
         type: "post",
-        url: "http://localhost/LTW/include/search_user.php",
+        url: "http://localhost:8000/include/search_user.php",
         data: {
             username: $("#search").val()
         },
         success: function (result) {
-            window.location.href = "http://localhost/ltw/profile.php?user_id=" + String(result);
+            window.location.href = "http://localhost:8000/account/profile.php?user_id=" + String(result);
         }
     })
 }
 
 function golog() {
     window.open(
-        "http://localhost/ltw/login.php",
+        "http://localhost:8000/login",
         '_blank' // <- This is what makes it open in a new window.
       );
 }
@@ -138,7 +138,7 @@ function getWallpaper(id) {
     var cid = id;
     $.ajax({
         type: "post",
-        url: "http://localhost/LTW/include/cat_wallpaper.php",
+        url: "http://localhost:8000/include/cat_wallpaper.php",
         data: {
             cat_id: cid
         },
@@ -164,7 +164,7 @@ function getWallpaper(id) {
             for (var i = 0; i < response.length; i++) {
                 var width = getRandomSize(200, 400);
                 var height = getRandomSize(200, 400);
-                allImages += "<img src='http://localhost/ltw/images/" + response[i] + "'" + '>';
+                allImages += "<img src='http://localhost:8000/images/" + response[i] + "'" + '>';
             }
             var selector = "#" + img_location;
             $(selector).append(allImages);
@@ -179,7 +179,7 @@ function downNum(id) {
     var wall_id = id;
     $.ajax({
         type: "post",
-        url: "http://localhost/LTW/include/wallpaper_plus.php",
+        url: "http://localhost:8000/include/wallpaper_plus.php",
         data: {
             wallpaper_id: wall_id
         },
@@ -200,7 +200,7 @@ function love(islog, uid, wid,bid) {
         if (lovebut.hasClass("purple")) {
             $.ajax({
                 type: "POST",
-                url: "http://localhost/ltw/include/plusbtn_process.php",
+                url: "http://localhost:8000/include/plusbtn_process.php",
                 data: {
                     lovepurple : true,
                     user_id: uid,
@@ -215,7 +215,7 @@ function love(islog, uid, wid,bid) {
         } else if (lovebut.hasClass('redz')) {
             $.ajax({
                 type: "POST",
-                url: "http://localhost/ltw/include/plusbtn_process.php",
+                url: "http://localhost:8000/include/plusbtn_process.php",
                 data: {
                     lovered: true,
                     user_id: uid,
@@ -241,7 +241,7 @@ function bookmark(islog, uid, wid,bid) {
         if (bookbut.hasClass("purple")) {
             $.ajax({
                 type: "POST",
-                url: "http://localhost/ltw/include/plusbtn_process.php",
+                url: "http://localhost:8000/include/plusbtn_process.php",
                 data: {
                     bookpurple : true,
                     user_id: uid,
@@ -255,7 +255,7 @@ function bookmark(islog, uid, wid,bid) {
         } else if (bookbut.hasClass('redz')) {
             $.ajax({
                 type: "POST",
-                url: "http://localhost/ltw/include/plusbtn_process.php",
+                url: "http://localhost:8000/include/plusbtn_process.php",
                 data: {
                     bookred: true,
                     user_id: uid,

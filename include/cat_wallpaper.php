@@ -16,7 +16,7 @@
         // }else if($cat_id==5){
         //     $image_location='girl';
         // }
-        $query="SELECT * FROM cms.image WHERE Cat_id=$cat_id";
+        $query="SELECT * FROM image WHERE Cat_id=$cat_id";
         $query_res=mysqli_query($conn,$query);
         if(!$query_res){
             die('show wallpaper by category failed.' .mysqli_error($conn));

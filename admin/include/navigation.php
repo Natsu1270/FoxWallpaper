@@ -7,11 +7,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a style="margin-top:10px;display: block" class="navbar-brand" href="index.php">Admin</a>
+                <a style="margin-top:10px;display: block" class="navbar-brand" href="/">Admin</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
-                <a  style="margin-top:12px;margin-left:0px;margin-right:10px;width:100px" href="../logout.php" class="btn btn-primary" >
+                <a  style="margin-top:12px;margin-left:0px;margin-right:10px;width:100px" href="../logout" class="btn btn-primary" >
                     <b>Log out</b>
                 </a>
                 <a href="../" style="margin-top:12px;margin-left:20px;margin-right:40px"  class="btn btn-danger"><b>Home Page</b></a>
@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="/"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     
                     <li>

@@ -25,7 +25,7 @@
         <input type="text" class="form-control" name="status">
     </div>
     <button type="submit" name="create_user" class="btn btn-primary">Create User</button>
-    <a href="index.php" class="btn btn-info">Back</a>
+    <a href="/" class="btn btn-info">Back</a>
 </form>
 <script> $(document).ready(function(){
             $("#addform").on('submit',function(e){

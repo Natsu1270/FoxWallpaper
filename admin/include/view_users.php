@@ -4,7 +4,7 @@
 // Delete user from database
 if(isset($_GET['delete'])){
     $del_id=$_GET['delete'];
-    $query="DELETE FROM cms.user where user_id=$del_id";
+    $query="DELETE FROM user where user_id=$del_id";
     $res=mysqli_query($conn,$query);
     if(!$res){
         echo('Query failed' .mysqli_error($conn));
@@ -13,11 +13,11 @@ if(isset($_GET['delete'])){
     $ban_id=$_GET['ban_id'];
     $ban_act=$_GET['ban_code'];
     if($ban_act==1){
-        $query="UPDATE cms.user SET status = 'ban' WHERE user_id=$ban_id";
+        $query="UPDATE user SET status = 'ban' WHERE user_id=$ban_id";
     }else if($ban_act==0){
-        $query="UPDATE cms.user SET status = '' WHERE user_id=$ban_id";
+        $query="UPDATE user SET status = '' WHERE user_id=$ban_id";
     }else if($ban_act==2){
-        $query="UPDATE cms.user SET status = '' WHERE user_id=$ban_id";
+        $query="UPDATE user SET status = '' WHERE user_id=$ban_id";
     }
     $ban_res=mysqli_query($conn,$query);
     if(!$ban_res){
@@ -36,7 +36,7 @@ if(isset($_POST['create_user'])){
     $randSalt=$_POST['randSalt'];
     $email=$_POST['email'];
     move_uploaded_file($temp_image,"../images/$avatar");
-    $query="insert into cms.user(username,password,role,email,avatar,status)";
+    $query="insert into user(username,password,role,email,avatar,status)";
     $query.="values('$username','$password','$role','$email','$avatar','$status')";
     $query_res=mysqli_query($conn,$query);
     if(!$query_res){

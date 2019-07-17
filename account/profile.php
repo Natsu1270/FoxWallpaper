@@ -10,7 +10,7 @@ if(isset($_GET['user_id'])){
     }else{
         $ownpage=false;
     }
-    $query="SELECT * FROM cms.user WHERE user_id=$user_id";
+    $query="SELECT * FROM user WHERE user_id=$user_id";
     $query_res=mysqli_query($conn,$query);
     if(!$query_res){
         die("Find user failed ".mysqli_error($conn));
@@ -40,19 +40,7 @@ if(isset($_GET['user_id'])){
 
 ?>
 <body>
-<!-- <div class="preloader-background">
-    <div class="preloader-wrapper big active">
-      <div class="spinner-layer spinner-blue">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
-    </div>
-</div> -->
+
 <!-- Modal upload iamge Structure -->
 <div id="upload_modal2" class="modal">
     <div class="modal-content">
@@ -182,7 +170,7 @@ if(isset($_GET['user_id'])){
 
             <div class="col s3 sitelogo" style="padding-left:40px">
                 <img id="fox-logo" src="logo/Fox.png" alt="foxwallpaper" class="brand-logo responsive-img">
-                <a id="main-logo" href="index.php" class="brand-logo">FoxWallpaper</a>
+                <a id="main-logo" href="/" class="brand-logo">FoxWallpaper</a>
             </div>
 
             <div class="col s3">
@@ -214,12 +202,12 @@ if(isset($_GET['user_id'])){
                 <?php }?>
                 
                 <?php if(isset($_SESSION['logged'])){?>
-                    <a class="mybutton waves-effect waves-light btn" href="logout.php"><b>Log out</b></a>
-                    <a class="mybutton waves-effect waves-light btn" href="index.php"><b>Home</b></a>
+                    <a class="mybutton waves-effect waves-light btn" href="/logout"><b>Log out</b></a>
+                    <a class="mybutton waves-effect waves-light btn" href="/"><b>Home</b></a>
                 <?php }else{?>
-                    <a class="mybutton waves-effect waves-light btn" href="login.php"><b>Log in</b></a>
-                    <a class="mybutton waves-effect waves-light btn" href="signup.php"><b>Sign up</b></a>
-                    <a class="mybutton waves-effect waves-light btn" href="index.php"><b>Home</b></a>
+                    <a class="mybutton waves-effect waves-light btn" href="/login"><b>Log in</b></a>
+                    <a class="mybutton waves-effect waves-light btn" href="/signup"><b>Sign up</b></a>
+                    <a class="mybutton waves-effect waves-light btn" href="/"><b>Home</b></a>
                 <?php }?>
 
             </div>
@@ -237,10 +225,10 @@ if(isset($_GET['user_id'])){
                             <i class="large material-icons">mode_edit</i>
                         </a>
                         <ul>
-                            <li><a href="profile.php" class="btn-floating red"><i class="material-icons">face</i></a></li>
+                            <li><a href="/profile" class="btn-floating red"><i class="material-icons">face</i></a></li>
                             <li><a href="collection.php" class="btn-floating yellow darken-1"><i class="material-icons">collections</i></a></li>
                             <li><a href="#upload_modal2" class="btn-floating green"><i class="material-icons">publish</i></a></li>
-                            <li><a href="login.php?logout=1" class="btn-floating blue"><i class="material-icons">exit_to_app</i></a></li>
+                            <li><a href="/login?logout=1" class="btn-floating blue"><i class="material-icons">exit_to_app</i></a></li>
                         </ul>
                     </div>
                     <?php } ?>
@@ -251,7 +239,7 @@ if(isset($_GET['user_id'])){
 <ul class="sidenav" style="background-color:#2a0d4566" id="mobile-demo">
     <li><a href="#modal1" class="btn waves-effect modal-trigger waves-light red"><i class="material-icons">edit</i></a></li>
     <li><a class='dropdown-trigger btn mybutton' href='#' data-target='dropdown1'>Category</a></li>
-    <li><a class="mybutton waves-effect waves-light btn" href="logout.php"><b>Log out</b></a></li>
+    <li><a class="mybutton waves-effect waves-light btn" href="/logout"><b>Log out</b></a></li>
 </ul>
         <!-- Tab area -->
         <!-- <div class="col s12 file-field input-field">
@@ -301,7 +289,7 @@ if(isset($_GET['user_id'])){
                         <?php 
                             $upload_count=uploadedCount($user_id);
                         ?>
-                        <h5>Uploaded: <a style="text-decoration:underline" href="http://localhost/ltw/ownerwallpaper.php?name=<?php echo $username?>"><?php echo $upload_count?> wallpapers</a></h5>;
+                        <h5>Uploaded: <a style="text-decoration:underline" href="http://localhost:8000/ownerwallpaper.php?name=<?php echo $username?>"><?php echo $upload_count?> wallpapers</a></h5>;
                     </div>
                 </div>
             </div>

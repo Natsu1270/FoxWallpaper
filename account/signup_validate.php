@@ -4,7 +4,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     if(isset($_POST['username'])){
         $username=strtolower(trim($_POST['username']));
         $username = filter_var($username, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW|FILTER_FLAG_STRIP_HIGH);
-        $results = mysqli_query($conn,"SELECT * FROM cms.user WHERE username='{$username}'");
+        $results = mysqli_query($conn,"SELECT * FROM user WHERE username='{$username}'");
         $user_exist=mysqli_num_rows($results);
         if(strlen($username)<3){
             $msg="username's length must be greater than 3";
@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $mgs="Invalid email format!";
             echo json_encode(array("message"=>$mgs,"error"=>1));
         }else{
-            $results = mysqli_query($conn,"SELECT * FROM cms.user WHERE email='{$email}'");
+            $results = mysqli_query($conn,"SELECT * FROM user WHERE email='{$email}'");
             $email_exist=mysqli_num_rows($results);
             if($email_exist){
             $mgs= "Email is already used for register!";

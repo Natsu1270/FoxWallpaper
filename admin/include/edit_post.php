@@ -1,7 +1,7 @@
 <?php
 $edit_id=$_GET['edit'];
 if($_SERVER['REQUEST_METHOD']=='GET'){
-    $query="select * from cms.image where Id=$edit_id";
+    $query="select * from image where Id=$edit_id";
     $query_res=mysqli_query($conn,$query);
     if(!$query_res){
         die("Query failed.");
@@ -16,7 +16,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
 if(isset($_POST['edit_post'])){
         $Cat_id=$_POST['cat_id'];
         $tag=$_POST['tag'];
-        $query="update cms.image set Cat_ID='$Cat_id',tag='$tag' where id=$edit_id";
+        $query="update image set Cat_ID='$Cat_id',tag='$tag' where id=$edit_id";
         if(!mysqli_query($conn,$query)){
             die("Insert failed" );
         }
@@ -34,7 +34,7 @@ if(isset($_POST['edit_post'])){
             <select class="custom-select" id="cat_select">
                 <option selected>Choose...</option>
                 <?php 
-                    $query="SELECT * FROM cms.category";
+                    $query="SELECT * FROM category";
                     $res=mysqli_query($conn,$query);
                     
                     while($row=mysqli_fetch_row($res)){
@@ -58,6 +58,6 @@ if(isset($_POST['edit_post'])){
         </div>
 
         <button type="submit" name="edit_post" class="btn btn-primary" >Upload wallpaper</button>
-        <a href="index.php" class="btn btn-info">Back</a>
+        <a href="/" class="btn btn-info">Back</a>
 
     </form>

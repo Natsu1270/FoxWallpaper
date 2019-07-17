@@ -2,7 +2,7 @@
     $download_path="";
     if(isset($_GET['ID'])){
         $wallpaper_id=(int)$_GET['ID'];
-        $query="select * from cms.image where ID=$wallpaper_id";
+        $query="select * from image where ID=$wallpaper_id";
         $query_res=mysqli_query($conn,$query);
         if(!$query_res){
             die("get image failed ".mysqli_error($conn));
@@ -18,7 +18,7 @@
             $Tag=$row['Tag'];
         }
         $download_path="images/$wallpaper";
-        $query="select * from cms.user where username='$Owner'";
+        $query="select * from user where username='$Owner'";
         $query_res=mysqli_query($conn,$query);
         if(!$query_res){
             die("get userid failed ".mysqli_error($conn));
@@ -95,7 +95,7 @@
                                     $keyword=$Tag;
                                 } 
                                 echo $keyword;
-                                $query="SELECT * FROM cms.image WHERE Tag LIKE '%$keyword%' AND ID!=$wallpaper_id LIMIT 5";
+                                $query="SELECT * FROM image WHERE Tag LIKE '%$keyword%' AND ID!=$wallpaper_id LIMIT 5";
                                 $relate=mysqli_query($conn,$query);
                                 if(!$relate){
                                     die("find relate failed ".mysqli_error($conn));
@@ -103,7 +103,7 @@
                                 while($row=mysqli_fetch_assoc($relate)){
                                     $wall_id=$row['ID'];
                                     $wallpaper=$row['Wallpaper'];
-                                    echo "<a class='carousel-item' href='http://localhost/ltw/download_dialog.php?ID=$wall_id'><img src='http://localhost/ltw/images/$wallpaper'></a>";
+                                    echo "<a class='carousel-item' href='http://localhost:8000/download_dialog.php?ID=$wall_id'><img src='http://localhost:8000/images/$wallpaper'></a>";
                                 }
                             ?>
                             </div>
@@ -116,18 +116,18 @@
                         <div class="row">
                             <div class="col s2">
                                 <!-- notice the "circle" class -->
-                                <a href="profile.php?user_id=<?php echo $user_id?>"><img style="height:50px !important;width:50px !important"
+                                <a href="/profile?user_id=<?php echo $user_id?>"><img style="height:50px !important;width:50px !important"
                                         src="images/avatar/<?php echo $user_ava?>" alt="" class="circle downavatar"></a>
                             </div>
                             <div class="col s10">
                                 <span class="black-text">
-                                    <a id="downOwner" href="profile.php?user_id=<?php echo $user_id?>">
+                                    <a id="downOwner" href="/profile?user_id=<?php echo $user_id?>">
                                         <?php echo $fullname ?></a>
                                    
                                 </span>
                             </div>
                             <div style="text-align:center" class="col s12">
-                                <a style="text-decoration:underline" href="http://localhost/ltw/ownerwallpaper.php?name=<?php echo $ownername?>"><span class="white-text"><?php echo uploadedCount($user_id)?> wallpapers</span></a>
+                                <a style="text-decoration:underline" href="http://localhost:8000/ownerwallpaper.php?name=<?php echo $ownername?>"><span class="white-text"><?php echo uploadedCount($user_id)?> wallpapers</span></a>
                             </div>
                         </div>
                     </div>
@@ -168,7 +168,7 @@
                         <div style="background: #ddb9ff !important" class="card-content white-text">
 
                             <div class="row">
-                                <?php $query="select * from cms.comment where wallpaper_id=$wallpaper_id order by date DESC";
+                                <?php $query="select * from comment where wallpaper_id=$wallpaper_id order by date DESC";
                                   $find=mysqli_query($conn,$query);
                                   if(!$find){
                                       die("find cmt failed ". mysqli_error($conn));
@@ -183,7 +183,7 @@
 
                                     <div class="row">
                                         <div class="col s6">
-                                            <a href="profile.php?user_id=<?php echo $user_cmt?>">
+                                            <a href="/profile?user_id=<?php echo $user_cmt?>">
                                                 <?php echo $username_cmt?>:</a>
                                         </div>
 

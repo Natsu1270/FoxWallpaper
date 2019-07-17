@@ -62,7 +62,7 @@
 
             <div class="col s3 sitelogo" style="padding-left:40px">
                 <img id="fox-logo" src="logo/Fox.png" alt="foxwallpaper" class="brand-logo responsive-img">
-                <a id="main-logo" href="index.php" class="brand-logo">FoxWallpaper</a>
+                <a id="main-logo" href="/" class="brand-logo">FoxWallpaper</a>
             </div>
 
 
@@ -83,11 +83,11 @@
                             if($_SESSION['role']=='admin'){
                                 echo '<a class="mybutton waves-effect waves-light btn" href="admin"><b>Admin</b></a>';
                             }else if($_SESSION['role']=='user'){
-                                echo '<a class="mybutton waves-effect waves-light btn" href="logout.php"><b>Log out</b></a>';
+                                echo '<a class="mybutton waves-effect waves-light btn" href="/logout"><b>Log out</b></a>';
                             }
                         }else{
-                            echo '<a class="mybutton waves-effect waves-light btn" href="login.php"><b>Log in</b></a>';
-                            echo '<a class="mybutton waves-effect waves-light btn" href="signup.php"><b>Sign up</b></a>';
+                            echo '<a class="mybutton waves-effect waves-light btn" href="/login"><b>Log in</b></a>';
+                            echo '<a class="mybutton waves-effect waves-light btn" href="/signup"><b>Sign up</b></a>';
                         } ?>
                 <!-- Element Showed -->
                 <a id="discovery" onclick="$('.tap-target').tapTarget('open')" class="waves-effect waves-light btn discoverybtn">About</a>
@@ -108,10 +108,10 @@
                             <i class="large material-icons">mode_edit</i>
                         </a>
                         <ul>
-                            <li><a href="profile.php" class="btn-floating red"><i class="material-icons">face</i></a></li>
+                            <li><a href="/profile" class="btn-floating red"><i class="material-icons">face</i></a></li>
                             <li><a href="collection.php" class="btn-floating yellow darken-1"><i class="material-icons">collections</i></a></li>
                             <li><a href="#upload_modal" class="modal-trigger btn-floating green"><i class="material-icons">publish</i></a></li>
-                            <li><a href="logout.php" class="btn-floating blue"><i class="material-icons">exit_to_app</i></a></li>
+                            <li><a href="/logout" class="btn-floating blue"><i class="material-icons">exit_to_app</i></a></li>
                         </ul>
                     </div>
                 <?php }else if($_SESSION['role']=='admin'){ ?>
@@ -121,7 +121,7 @@
                      </a>
                      <ul>
                          <li><a href="admin" class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-                         <li><a href="logout.php" class="btn-floating violet darken-1"><i class="material-icons">exit_to_app</i></a></li>
+                         <li><a href="/logout" class="btn-floating violet darken-1"><i class="material-icons">exit_to_app</i></a></li>
                      </ul>
                  </div>
                 <?php }}?>
@@ -135,10 +135,10 @@
                 if($_SESSION['role']=='admin'){
                     echo '<li><a class="mybutton waves-effect waves-light btn" href="admin"><b>Admin</b></a></li>';
                     }else if($_SESSION['role']=='user'){
-                    echo '<li><a class="mybutton waves-effect waves-light btn" href="logout.php"><b>Log out</b></a></li>';
+                    echo '<li><a class="mybutton waves-effect waves-light btn" href="/logout"><b>Log out</b></a></li>';
                     }
                     }else{
-                    echo '<li><a class="mybutton waves-effect waves-light btn" href="login.php"><b>Log in</b></a></li>';
-                    echo '<li><a class="mybutton waves-effect waves-light btn" href="signup.php"><b>Sign up</b></a></li>';
+                    echo '<li><a class="mybutton waves-effect waves-light btn" href="/login"><b>Log in</b></a></li>';
+                    echo '<li><a class="mybutton waves-effect waves-light btn" href="/signup"><b>Sign up</b></a></li>';
         } ?>
 </ul>

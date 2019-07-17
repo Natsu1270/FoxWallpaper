@@ -23,7 +23,7 @@ if(isset($_POST['upload'])){
             $image_location='girl';
         }
         move_uploaded_file($temp_wallpaper,"../images/$wallpaper");
-        $query="insert into cms.image(Cat_id,Wallpaper,Owner,Date_upload,Tag)";
+        $query="insert into image(Cat_id,Wallpaper,Owner,Date_upload,Tag)";
         $query.="values('$Cat_id','$wallpaper','$Owner','$date','$tag')";
         if(!mysqli_query($conn,$query)){
             die("Insert failed" .mysqli_error($conn));
@@ -43,7 +43,7 @@ if(isset($_POST['upload'])){
             <select class="custom-select" id="cat_select">
                 <option selected>Choose...</option>
                 <?php 
-                    $query="SELECT * FROM cms.category";
+                    $query="SELECT * FROM category";
                     $res=mysqli_query($conn,$query);
                     while($row=mysqli_fetch_row($res)){
                         echo "<option value='$row[0]'>$row[1]</option>";
@@ -63,7 +63,7 @@ if(isset($_POST['upload'])){
         </div>
 
         <button type="submit" name="upload" class="btn btn-primary" >Upload wallpaper</button>
-        <a href="index.php" class="btn btn-info">Back</a>
+        <a href="/" class="btn btn-info">Back</a>
 
     </form>
     

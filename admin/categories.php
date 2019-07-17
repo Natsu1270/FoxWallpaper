@@ -1,5 +1,5 @@
 <?php 
-include "includes/header.php";
+include "include/header.php";
 //include "util.php";
 
 ?>
@@ -9,7 +9,7 @@ include "includes/header.php";
     <div id="wrapper">
         <!-- Navigation -->
         <?php
-        include "includes/navigation.php";
+        include "include/navigation.php";
         ?>
 
         <div id="page-wrapper">
@@ -52,7 +52,7 @@ include "includes/header.php";
                                         <?php
                                         if(isset($_GET['edit'])){
                                             $id=(int)$_GET['edit'];
-                                            $edit_query="select * from cms.category where id=$id";
+                                            $edit_query="select * from category where id=$id";
                                             $edit_res=mysqli_query($conn,$edit_query);
                                             while($row=mysqli_fetch_assoc($edit_res)){
                                                 $cat_id=$row['id'];
@@ -68,7 +68,7 @@ include "includes/header.php";
                                         if(isset($_POST['edit'])){
                                             $cat_title=$_POST['new_title'];
                                             $cat_id=$_POST['new_id'];
-                                            $query="update cms.category set title='$cat_title',id='$cat_id' where id=$id";
+                                            $query="update category set title='$cat_title',id='$cat_id' where id=$id";
                                             $edit_res=mysqli_query($conn,$query);
                                             if(!$edit_res){
                                                 die("Query failed");

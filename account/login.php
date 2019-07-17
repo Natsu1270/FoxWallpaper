@@ -16,44 +16,51 @@ if(isset($_POST['login'])){
         unset($_COOKIE['username']);
         unset($_COOKIE['password']);
     }
-    $query="select * from cms.user where username='{$log_username}'";
+    $query="select * from user where username='{$log_username}'";
     $login_res=mysqli_query($conn,$query);
+
     if(!$login_res){
-        header("Location: login.php?error=1");
+        header("Location: login?error=1");
     }else{
-        while($row=mysqli_fetch_assoc($login_res)){
-            $user_id=$row['user_id'];
-            $username=$row['username'];
-            $password=$row['password'];
-            $about=$row['about'];
-            $birthday=$row['birthday'];
-            $fullname=$row['fullname'];
-            $avatar=$row['avatar'];
-            $email=$row['email'];
-            $role=$row['role'];
-            $gender=$row['gender'];
-            $status=$row['status'];
-            if(!password_verify($log_password,$password) || $log_username!==$username){
-                header("Location: login.php?error_code=1");
-            }else if($status=='unactived'){  // check if user has been activated.
-                header("Location: login.php?error_code=2");
-            }else if($status=='ban'){
-                header("Location: login.php?error_code=3");
-            }
-            else{
-                $_SESSION['status']=$status;
-                $_SESSION['user_id']=$user_id;
-                $_SESSION['password']=$password;
-                $_SESSION['logged']=true;
-                $_SESSION['username']=$username;
-                $_SESSION['role']=$role;
-                $_SESSION['email']=$email;
-                $_SESSION['gender']=$gender;
-                $_SESSION['fullname']=$fullname;
-                $_SESSION['about']=$about;
-                $_SESSION['birthday']=$birthday;
-                $_SESSION['avatar']=$avatar;
-                header("Location:index.php");
+        $rowcount=mysqli_num_rows($login_res);
+        if($rowcount == 0){
+            header("Location: login?error_code=1");
+        }else{
+            while($row=mysqli_fetch_assoc($login_res)){
+        
+                $user_id=$row['user_id'];
+                $username=$row['username'];
+                $password=$row['password'];
+                $about=$row['about'];
+                $birthday=$row['birthday'];
+                $fullname=$row['fullname'];
+                $avatar=$row['avatar'];
+                $email=$row['email'];
+                $role=$row['role'];
+                $gender=$row['gender'];
+                $status=$row['status'];
+                if(!password_verify($log_password,$password) || $log_username!==$username){
+                    header("Location: /login?error_code=1");
+                }else if($status=='unactived'){  // check if user has been activated.
+                    header("Location: /login?error_code=2");
+                }else if($status=='ban'){
+                    header("Location: /login?error_code=3");
+                }
+                else{
+                    $_SESSION['status']=$status;
+                    $_SESSION['user_id']=$user_id;
+                    $_SESSION['password']=$password;
+                    $_SESSION['logged']=true;
+                    $_SESSION['username']=$username;
+                    $_SESSION['role']=$role;
+                    $_SESSION['email']=$email;
+                    $_SESSION['gender']=$gender;
+                    $_SESSION['fullname']=$fullname;
+                    $_SESSION['about']=$about;
+                    $_SESSION['birthday']=$birthday;
+                    $_SESSION['avatar']=$avatar;
+                    header("Location:/");
+                }
             }
         }
     }
@@ -89,7 +96,7 @@ if(isset($_POST['login'])){
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
-                        <a href="signup.php" style="display:block;text-align: center;color:black !important">Create  an  account</a>
+                        <a href="/signup" style="display:block;text-align: center;color:black !important">Create  an  account</a>
                     </div>
 
                     <div class="signin-form">
@@ -139,7 +146,7 @@ if(isset($_POST['login'])){
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit"  id="my-font" name="login" id="signin" class="form-submit logbut" value="Log in"/>
-                                <a href="index.php" id="my-font" style="text-decoration:none" class="form-submit logbut">Home</a>
+                                <a href="/" id="my-font" style="text-decoration:none" class="form-submit logbut">Home</a>
                             </div>
                         </form>
                         <div class="social-login">

@@ -1,7 +1,7 @@
 <?php
 if(isset($_GET['delete'])){
     $del_id=$_GET['delete'];
-    $query="DELETE FROM cms.image where ID=$del_id";
+    $query="DELETE FROM image where ID=$del_id";
     $res=mysqli_query($conn,$query);
     if(!$res){
         die('Query failed');

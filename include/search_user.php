@@ -2,7 +2,7 @@
 include"database_connect.php";
 if(isset($_POST['username'])){
     $username=$_POST['username'];
-    $query="SELECT * FROM cms.user WHERE username='$username'";
+    $query="SELECT * FROM user WHERE username='$username'";
     $query_res=mysqli_query($conn,$query);
     if(!$query_res){
         die("Search user fail ".mysqli_error($conn));

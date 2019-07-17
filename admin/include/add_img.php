@@ -23,7 +23,7 @@ if(isset($_POST['upload'])){
             $image_location='girl';
         }
         move_uploaded_file($temp_wallpaper,"../images/$wallpaper");
-        $query="insert into cms.image(Cat_id,Wallpaper,Owner,Date_upload,Tag)";
+        $query="insert into image(Cat_id,Wallpaper,Owner,Date_upload,Tag)";
         $query.="values('$Cat_id','$wallpaper','$Owner','$date','$tag')";
         if(!mysqli_query($conn,$query)){
             die("Insert failed" .mysqli_error($conn));
