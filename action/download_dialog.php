@@ -127,7 +127,7 @@
                                 </span>
                             </div>
                             <div style="text-align:center" class="col s12">
-                                <a style="text-decoration:underline" href="http://localhost:8000/ownerwallpaper.php?name=<?php echo $ownername?>"><span class="white-text"><?php echo uploadedCount($user_id)?> wallpapers</span></a>
+                                <a style="text-decoration:underline" href="/uploaded?name=<?php echo $ownername?>"><span class="white-text"><?php echo uploadedCount($user_id)?> wallpapers</span></a>
                             </div>
                         </div>
                     </div>

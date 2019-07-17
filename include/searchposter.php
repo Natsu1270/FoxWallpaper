@@ -1,10 +1,11 @@
+
 <!-- Search area -->
 <div class="poster" style="background-image:url('images/forest.jpeg')">
             <div class="banner">
                 <strong>Free amazing wallpapers for you on FoxWallpaper</strong>
             </div>
             <div class="s003">
-                <form action="search_/" method="GET">
+                <form action="/search" method="GET">
                     <div class="searchtitle">
                         <p style="color:white !important">Find stunning wallpapers here</p>
                     </div>
@@ -42,11 +43,11 @@
                     </div>
                     <div class="suggest">
                         <span>Examples:</span>
-                        <a href="search_/?cat_id=0&searchinput=girl&submit">girl,</a>
-                        <a href="search_/?cat_id=0&searchinput=nature&submit">nature,</a>
-                        <a href="search_/?cat_id=0&searchinput=motorbike&submit">motorbike,</a>
-                        <a href="search_/?cat_id=0&searchinput=beautiful&submit">beautiful,</a>
-                        <a href="search_/?cat_id=0&searchinput=cloud&submit">cloud...</a>
+                        <a href="/search?cat_id=0&searchinput=girl&submit">girl,</a>
+                        <a href="/search?cat_id=0&searchinput=nature&submit">nature,</a>
+                        <a href="/search?cat_id=0&searchinput=motorbike&submit">motorbike,</a>
+                        <a href="/search?cat_id=0&searchinput=beautiful&submit">beautiful,</a>
+                        <a href="/search?cat_id=0&searchinput=cloud&submit">cloud...</a>
                     </div>
                 </form>
             </div>
@@ -58,3 +59,4 @@
                 });
             </script> -->
         </div> <!-- End of poster -->
+

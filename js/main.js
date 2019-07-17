@@ -84,7 +84,7 @@ $(document).ready(function () {
                 username: $("#search").val()
             },
             success: function (result) {
-                window.location.href = "http://localhost:8000/account/profile.php?user_id=" + String(result);
+                window.location.href = "/profile?user_id=" + String(result);
             }
         })
     })

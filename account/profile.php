@@ -226,7 +226,7 @@ if(isset($_GET['user_id'])){
                         </a>
                         <ul>
                             <li><a href="/profile" class="btn-floating red"><i class="material-icons">face</i></a></li>
-                            <li><a href="collection.php" class="btn-floating yellow darken-1"><i class="material-icons">collections</i></a></li>
+                            <li><a href="/collection" class="btn-floating yellow darken-1"><i class="material-icons">collections</i></a></li>
                             <li><a href="#upload_modal2" class="btn-floating green"><i class="material-icons">publish</i></a></li>
                             <li><a href="/login?logout=1" class="btn-floating blue"><i class="material-icons">exit_to_app</i></a></li>
                         </ul>
@@ -289,7 +289,7 @@ if(isset($_GET['user_id'])){
                         <?php 
                             $upload_count=uploadedCount($user_id);
                         ?>
-                        <h5>Uploaded: <a style="text-decoration:underline" href="http://localhost:8000/ownerwallpaper.php?name=<?php echo $username?>"><?php echo $upload_count?> wallpapers</a></h5>;
+                        <h5>Uploaded: <a style="text-decoration:underline" href="/uploaded?name=<?php echo $username?>"><?php echo $upload_count?> wallpapers</a></h5>;
                     </div>
                 </div>
             </div>

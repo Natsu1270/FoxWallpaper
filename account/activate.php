@@ -9,7 +9,7 @@ if(isset($_GET['code'])){
         die('active acc failed '.mysqli_error($conn));
     }
     $row=mysqli_fetch_assoc($res);
-    $user_id=$row['user_Id'];
+    $user_id=$row['user_id'];
     $add_query="UPDATE user SET status = '' where user_id = $user_id";
     $add_res=mysqli_query($conn,$add_query);
     if(!$add_res){

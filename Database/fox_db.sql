@@ -1,19 +1,19 @@
 CREATE TABLE `bookmark` (
-  `b_Id` int(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `b_userId` int(5) NOT NULL,
-  `b_wallId` int(5) NOT NULL
+  `b_id` int(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `b_userid` int(5) NOT NULL,
+  `b_wallid` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 
 
 CREATE TABLE `category` (
-  `Id` int(3) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `id` int(3) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `title` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-INSERT INTO `category` (`Id`, `title`) VALUES
+INSERT INTO `category` (`id`, `title`) VALUES
 (1, '3D Abstract'),
 (2, 'Anime'),
 (3, 'Bike'),
@@ -25,9 +25,9 @@ INSERT INTO `category` (`Id`, `title`) VALUES
 
 
 CREATE TABLE `comment` (
-  `Id` int(3) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `wallpaper_Id` int(5) NOT NULL,
-  `user_Id` varchar(255) NOT NULL,
+  `id` int(3) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `wallpaper_id` int(5) NOT NULL,
+  `user_id` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `date` datetime NOT NULL
@@ -37,8 +37,8 @@ CREATE TABLE `comment` (
 
 
 CREATE TABLE `image` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `Cat_Id` int(3) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `Cat_ID` int(3) NOT NULL,
   `Wallpaper` text NOT NULL,
   `Owner` varchar(255) NOT NULL,
   `DownNum` int(11) NOT NULL,
@@ -60,8 +60,8 @@ CREATE TABLE `love` (
 
 
 CREATE TABLE `posts` (
-  `Id` int(3) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `cat_Id` int(3) NOT NULL,
+  `id` int(3) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `cat_id` int(3) NOT NULL,
   `title` varchar(255) NOT NULL,
   `author` varchar(255) NOT NULL,
   `date` date NOT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE `posts` (
 
 
 CREATE TABLE `user` (
-  `user_Id` int(3) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `user_id` int(3) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `fullname` varchar(255) NULL DEFAULT 'Mr.Fox',
