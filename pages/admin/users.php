@@ -1,12 +1,13 @@
 <?php 
-include "include/header.php";
+include "include/admin/header.php";
+include "include/database_connect.php";
 //include "util.php";
 ?>
 <body>
     <div id="wrapper">
         <!-- Navigation -->
         <?php
-        include "include/navigation.php";
+        include "include/admin/navigation.php";
         ?>
         <div id="page-wrapper">
             <div class="container-fluid">
@@ -25,11 +26,11 @@ include "include/header.php";
                             }
                             switch($source){
                                 case 'add_user':
-                                    include "include/add_user.php";break;
+                                    include "include/admin/add_user.php";break;
                                 case 'edit_post':
-                                    include "include/edit_post.php";break;
+                                    include "include/admin/edit_post.php";break;
                                 default:
-                                include "include/view_users.php";
+                                include "include/admin/view_users.php";
                                 break;
                             }?>
                         </div>

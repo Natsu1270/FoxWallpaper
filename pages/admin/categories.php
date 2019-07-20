@@ -1,7 +1,6 @@
 <?php 
-include "include/header.php";
-//include "util.php";
-
+include "include/database_connect.php";
+include "include/admin/header.php";
 ?>
 
 <body>
@@ -9,7 +8,7 @@ include "include/header.php";
     <div id="wrapper">
         <!-- Navigation -->
         <?php
-        include "include/navigation.php";
+        include "include/admin/navigation.php";
         ?>
 
         <div id="page-wrapper">
@@ -78,7 +77,9 @@ include "include/header.php";
                                         ?>
 
                                     </div>
-                                        <input id="editcat" type="submit" name="edit" value="Edit category" class="btn btn-info">
+                                        <?php if(isset($_GET['edit'])){
+                                              echo '<input id="editcat" type="submit" name="edit" value="Edit category" class="btn btn-info">';
+                                        }?>
                                         
                                     <div class="form-group"></div>
                                 </form>

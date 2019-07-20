@@ -1,12 +1,15 @@
-<?php 
-include "include/header.php";
+<?php
+include "include/database_connect.php";
+include "include/admin/header.php";
+include_once 'google-api-php-client/vendor/autoload.php';
+include_once "driveapi/base.php";
 ?>
 
 <body>
     <div id="wrapper">
         <!-- Navigation -->
         <?php
-        include "include/navigation.php";
+        include "include/admin/navigation.php";
         ?>
         <div id="page-wrapper">
             <div class="container-fluid">
@@ -21,41 +24,41 @@ include "include/header.php";
                         <h2>FoxWallpaper metrics:</h2>
                         <div class="chart">
                             <div class="metric col-4" style="width: 18rem;">
-                                <img class="card-img-top" src="admin/images/user.png"  alt="Card image cap">
+                                <img class="card-img-top" src="images/admin/user.png"  alt="Card image cap">
                                 <div class="card-body">
                                     <h3 class="card-title">User: <?php echo metric()['user_count']?></h3>
                                     <p class="card-text"></p>
-                                    <a href="http://localhost:8000/admin/users.php" class="btn btn-danger">View</a>
-                                    <a href="http://localhost:8000/admin/users.php?source=add_user" class="btn btn-danger">Add</a>
+                                    <a href="admin-users" class="btn btn-danger">View</a>
+                                    <a href="admin-users?source=add_user" class="btn btn-danger">Add</a>
                                 </div>
                             </div>
 
                             <div class="metric col-4" style="width: 18rem;">
-                                <img class="card-img-top" src="admin/images/wallpaper.jpg" alt="Card image cap">
+                                <img class="card-img-top" src="images/admin/wallpaper.jpg" alt="Card image cap">
                                 <div class="card-body">
                                     <h3 class="card-title">Wallpaper: <?php echo metric()['img_count']?></h3>
                                     <p class="card-text"></p>
-                                    <a href="http://localhost:8000/admin/posts.php" class="btn btn-danger">View</a>
-                                    <a href="http://localhost:8000/admin/posts.php?source=add_post" class="btn btn-danger">Add</a>
+                                    <a href="admin-posts" class="btn btn-danger">View</a>
+                                    <a href="admin-posts?source=add_post" class="btn btn-danger">Add</a>
                                 </div>
                             </div>
 
                             <div class="metric col-4" style="width: 18rem;">
-                                <img class="card-img-top" src="admin/images/cmt.png" alt="Card image cap">
+                                <img class="card-img-top" src="images/admin/cmt.png" alt="Card image cap">
                                 <div class="card-body">
                                     <h3 class="card-title">Comment: <?php echo metric()['cmt_count']?></h3>
                                     <p class="card-text"></p>
-                                    <a href="http://localhost:8000/admin/comments.php" class="btn btn-danger">Manage</a>
+                                    <a href="admin-comment" class="btn btn-danger">Manage</a>
                                     
                                 </div>
                             </div>
 
                             <div class="metric col-4" style="width: 18rem;">
-                                <img class="card-img-top" src="admin/images/category.png" alt="Card image cap">
+                                <img class="card-img-top" src="images/admin/category.png" alt="Card image cap">
                                 <div class="card-body">
                                     <h3 class="card-title">Category: <?php echo metric()['category_count']?></h3>
                                     <p class="card-text"></p>
-                                    <a href="http://localhost:8000/admin/categories.php" class="btn btn-danger">Manage</a>
+                                    <a href="admin-category" class="btn btn-danger">Manage</a>
                                     
                                 </div>
                             </div>

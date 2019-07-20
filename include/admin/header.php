@@ -1,8 +1,7 @@
 <?php ob_start(); ?>
 
-<?php include "../include/database_connect.php";
-include "util.php";
-      //include "util.php"; ?>
+<?php 
+include "util/util.php"; ?>
 <?php session_start() ?>
 
 <!DOCTYPE html>
@@ -19,14 +18,14 @@ include "util.php";
     <title>FoxWallpaper Administrator Dashboard</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/admin/bootstrap.min.css" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link href="admin/css/sb-admin.css" rel="stylesheet">
+    <link href="css/admin/sb-admin.css" rel="stylesheet">
     <!-- Custom Fonts -->
-    <link href="admin/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <script src="admin/js/jquery.js"></script>
-    <script src="admin/js/bootstrap.js"></script>
-    <script src="admin/js/admin.js"></script>
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script src="js/admin/jquery.js"></script>
+    <script src="js/admin/bootstrap.js"></script>
+    <script src="js/admin/admin.js"></script>
     
 </head>

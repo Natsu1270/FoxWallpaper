@@ -7,7 +7,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a style="margin-top:10px;display: block" class="navbar-brand" href="/">Admin</a>
+                <a style="margin-top:10px;display: block" class="navbar-brand" href="/admin">Admin</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -35,28 +35,28 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#posts_dd"><i class="fa fa-fw fa-arrows-v"></i> Images <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="posts_dd" class="collapse">
                             <li>
-                                <a href="posts.php?source=add_post">Add Image</a>
+                                <a href="/admin-posts?source=add_post">Add Image</a>
                             </li>
                             <li>
-                                <a href="posts.php">View Images</a>
+                                <a href="/admin-posts">View Images</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="/category"><i class="fa fa-fw fa-wrench"></i> Categories</a>
+                        <a href="admin-category"><i class="fa fa-fw fa-wrench"></i> Categories</a>
                     </li>
                     <li class="active">
-                        <a href="comments.php"><i class="fa fa-fw fa-file"></i> Comments</a>
+                        <a href="admin-comment"><i class="fa fa-fw fa-file"></i> Comments</a>
                     </li>
                    
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="users.php?source=add_user">Add User</a>
+                                <a href="/admin-users?source=add_user">Add User</a>
                             </li>
                             <li>
-                                <a href="users.php">All users</a>
+                                <a href="/admin-users">All users</a>
                             </li>
                         </ul>
                     </li>

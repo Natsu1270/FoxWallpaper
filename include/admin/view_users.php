@@ -30,14 +30,23 @@ if(isset($_POST['create_user'])){
     $username=$_POST['username'];
     $password=$_POST['password'];
     $avatar=$_FILES['avatar']['name'];
-    $temp_image=$_FILES['avatar']['tmp_name'];
+    error_log("avatar" . $avatar);
+    if($avatar != null && !empty($avatar)){
+        $temp_image=$_FILES['avatar']['tmp_name'];
+        move_uploaded_file($temp_image,"../images/$avatar");
+    }
     $status=$_POST['status'];
     $role=$_POST['role'];
     $randSalt=$_POST['randSalt'];
     $email=$_POST['email'];
-    move_uploaded_file($temp_image,"../images/$avatar");
-    $query="insert into user(username,password,role,email,avatar,status)";
-    $query.="values('$username','$password','$role','$email','$avatar','$status')";
+    if($avatar != null && !empty($avatar)){
+        $query="insert into user(username,password,role,email,avatar,status)";
+        $query.="values('$username','$password','$role','$email','$avatar','$status')";
+    }else{
+        $query="insert into user(username,password,role,email,status)";
+        $query.="values('$username','$password','$role','$email','$status')";
+    }
+    
     $query_res=mysqli_query($conn,$query);
     if(!$query_res){
         die("Insert failed" .mysqli_error($conn));

@@ -1,5 +1,5 @@
 
-<form action="users.php" method="post" enctype='multipart/form-data' id="addform">
+<form action="/admin-users" method="post" enctype='multipart/form-data' id="addform">
     <div class="form-group">
         <label for="username">Username</label>
         <input type="text" class="form-control" id="username" name="username">
@@ -25,7 +25,7 @@
         <input type="text" class="form-control" name="status">
     </div>
     <button type="submit" name="create_user" class="btn btn-primary">Create User</button>
-    <a href="/" class="btn btn-info">Back</a>
+    <a href="/admin" class="btn btn-info">Back</a>
 </form>
 <script> $(document).ready(function(){
             $("#addform").on('submit',function(e){
@@ -36,6 +36,7 @@
             var email=$("input[name='email']").val();
             var status=$("input[name='status']").val();
             var avatar=$("input[name='avatar']").val();
+            console.log(avatar);
             if(username.trim()==null||username.trim()==""||password.trim()==null||password.trim()==""||role.trim()==null||role.trim()==""){
                 alert("Some of your input is empty!Please check again");
                 e.preventDefault();return false;

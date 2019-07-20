@@ -1,4 +1,5 @@
 <?php
+
 // include "util/splitUrl.php";
 $request = $_SERVER['REQUEST_URI'];
 if(!strpos($request,'?')){
@@ -10,6 +11,8 @@ if(!strpos($request,'?')){
         case '' :
             require __DIR__ . '/pages/home.php';
             break;
+        
+        
         case '/about' :
             require __DIR__ . '/pages/about.php';
             break;
@@ -34,8 +37,22 @@ if(!strpos($request,'?')){
         case '/collection' :
             require __DIR__ . '/pages/collection.php';
             break;
-        case '/admin':
-            require __DIR__ . '/admin/index.php';
+
+        // admin rounting
+        case '/admin' :
+            require __DIR__ . '/pages/admin/home.php';
+            break;
+        case '/admin-category' :
+            require __DIR__ . '/pages/admin/categories.php';
+            break;
+        case '/admin-comment' :
+            require __DIR__ . '/pages/admin/comments.php';
+            break;
+        case '/admin-users' :
+            require __DIR__ . '/pages/admin/users.php';
+            break;
+        case '/admin-posts' :
+            require __DIR__ . '/pages/admin/posts.php';
             break;
         default:
             require __DIR__ . '/pages/404.php';
@@ -65,7 +82,16 @@ if(!strpos($request,'?')){
         case '/profile' :
             require __DIR__ . '/account/profile.php';
             break;
-       
+
+        case '/admin-users' :
+            require __DIR__ . '/pages/admin/users.php';
+            break;
+        case '/admin-posts' :
+            require __DIR__ . '/pages/admin/posts.php';
+            break;
+        case '/admin-category' :
+            require __DIR__ . '/pages/admin/categories.php';
+            break;
             
         default:
             require __DIR__ . '/pages/404.php';
