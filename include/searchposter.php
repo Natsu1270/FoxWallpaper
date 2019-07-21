@@ -20,11 +20,11 @@
                             <div class="input-field col s12 m6">
                                 <select class="icons" name="cat_id">
                                     <option value="0" placeholder="">All..</option>
-                                    <option value="1" data-icon="images/sky_light_abstraction_85064_1920x1080.jpg">3D Abstract</option>
-                                    <option value="2" data-icon="images/anime-girl-black-hair-sad-expression-semi-realistic.png">Anime</option>
-                                    <option value="3" data-icon="images/volkan-olmez-340811-unsplash.jpg">Bike</option>
-                                    <option value="4" data-icon="images/beautifulworld1600.jpg">Landscape</option>
-                                    <option value="5" data-icon="images/1.jpg">Girl</option>
+                                    <option value="1" >3D Abstract</option>
+                                    <option value="2" >Anime</option>
+                                    <option value="3" >Bike</option>
+                                    <option value="4" >Landscape</option>
+                                    <option value="5" >Girl</option>
                                 </select>
                             </div>
                                        

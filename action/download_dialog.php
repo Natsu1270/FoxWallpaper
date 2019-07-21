@@ -1,6 +1,8 @@
 <?php include"include/header.php";
     $download_path="";
     if(isset($_GET['ID'])){
+        $cat_id = $_GET['cat_id'];
+        $cat_name = getCateNameById($cat_id);
         $wallpaper_id=(int)$_GET['ID'];
         $query="select * from image where ID=$wallpaper_id";
         $query_res=mysqli_query($conn,$query);
@@ -17,7 +19,7 @@
             $Date_upload=$row['Date_upload'];
             $Tag=$row['Tag'];
         }
-        $download_path="images/$wallpaper";
+        $download_path="images/category/$cat_name/$wallpaper";
         $query="select * from user where username='$Owner'";
         $query_res=mysqli_query($conn,$query);
         if(!$query_res){
@@ -57,7 +59,7 @@
                     <div class="row dwnwallsite">
                         <div class="card col s12">
                             <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator" src="images/<?php echo $wallpaper?>">
+                                <img class="activator" src="images/category/<?php echo $cat_name . "/" .$wallpaper?>">
                             </div>
                             <div class="card-content">
                                 <span class="card-title activator grey-text text-darken-4">Click to comment<i class="material-icons right">more_vert</i></span>

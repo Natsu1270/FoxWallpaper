@@ -56,6 +56,7 @@ include "include/admin/header.php";
                                             while($row=mysqli_fetch_assoc($edit_res)){
                                                 $cat_id=$row['id'];
                                                 $cat_title=$row['title'];
+                                                $old_name = $row['title'];
                                                 ?>
                                         <input value="<?php if(isset($cat_id)){echo $cat_id;}?>" type="text" name="new_id" id="cat" class="form-control" placeholder="Enter new id...">
                                         <input value="<?php if(isset($cat_title)){echo $cat_title;}?>" type="text" name="new_title" id="cat" class="form-control" placeholder="Enter category name...">
@@ -71,6 +72,10 @@ include "include/admin/header.php";
                                             $edit_res=mysqli_query($conn,$query);
                                             if(!$edit_res){
                                                 die("Query failed");
+                                            }else{
+                                                if (is_dir('images/category/' . $old_name)) {
+                                                    rename('images/category/' . $old_name,'images/category/' . $cat_title);
+                                                }
                                             }
                                         }
 

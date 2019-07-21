@@ -1,8 +1,11 @@
 <?php
 include "include/database_connect.php";
 include "include/admin/header.php";
-include_once 'google-api-php-client/vendor/autoload.php';
-include_once "driveapi/base.php";
+if(!isset($_SESSION['logged'])){
+    header("Location:/login");
+}else if($_SESSION['role'] != 'admin'){
+    header("Location:/");
+}
 ?>
 
 <body>

@@ -16,9 +16,14 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
 if(isset($_POST['edit_post'])){
         $Cat_id=$_POST['cat_id'];
         $tag=$_POST['tag'];
+        $cat_name = $_GET['cat_name'];
+        $new_cat = getCateNameById($Cat_id);
+        $img = $_GET['img'];
         $query="update image set Cat_ID='$Cat_id',tag='$tag' where id=$edit_id";
         if(!mysqli_query($conn,$query)){
             die("Insert failed" );
+        }else{
+            rename("images/category/$cat_name/$img","images/category/$new_cat/$img");
         }
 }
 ?>
@@ -58,6 +63,6 @@ if(isset($_POST['edit_post'])){
         </div>
 
         <button type="submit" name="edit_post" class="btn btn-primary" >Upload wallpaper</button>
-        <a href="/" class="btn btn-info">Back</a>
+        <a href="/admin-posts" class="btn btn-info">Back</a>
 
     </form>

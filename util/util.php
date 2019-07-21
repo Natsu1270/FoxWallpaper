@@ -1,4 +1,36 @@
 <?php
+function execute($query,$conn,$error_msg){
+    $query_res=mysqli_query($conn,$query);
+    if(!$query_res){
+        die($error_msg . mysqli_error($conn));
+    }else{
+        return $query_res;
+    }
+
+}
+
+function getCateNameById($id){
+    global $conn;
+    $query="SELECT * FROM category WHERE id = $id";
+    $error_msg = "get categories failed! ";
+    $query_res = execute($query,$conn,$error_msg);
+    while($row = mysqli_fetch_assoc($query_res)){
+        $cate_name = $row['title'];
+    }
+    return $cate_name;
+}
+
+function getAllCategory(){
+    global $conn;
+    $categories = array();
+    $query="SELECT * FROM category";
+    $error_msg = "get categories failed! ";
+    $query_res = execute($query,$conn,$error_msg);
+    while($row = mysqli_fetch_assoc($query_res)){
+        $categories[] = $row;
+    }
+    return json_encode($categories);
+}
 
 function add(){
     global $conn;
@@ -10,7 +42,7 @@ function add(){
     }else{
         $query="INSERT INTO category(title) VALUE('{$title}')";
         $res=mysqli_query($conn,$query);
-        if (!file_exists('images/category/' . $title)) {
+        if (!is_dir('images/category/' . $title)) {
             mkdir('images/category/' . $title, 0777, true);
         }
         if(!$res){
@@ -19,22 +51,31 @@ function add(){
     }
 }
 
-function delete()
-{
+function delete(){
     
     global $conn;
 
     $id=$_GET['id'];
+    $cate = execute("SELECT * FROM category WHERE id = {$id} ",$conn,"");
+    while($row = mysqli_fetch_assoc($cate)){
+        $title = $row["title"];
+    }
     $query="DELETE FROM category WHERE id={$id}";
+    
     if(!mysqli_query($conn,$query)){
         die("Query Failed.");
     }else{
+        if (is_dir('images/category/' . $title)) {
+            if(!rmdir('images/category/' . $title)){
+                error_log("Can not delete directory!");
+            }
+        }
         header("Location:/admin-category");
     }
 
 }
-function findAllCat()
-{
+
+function findAllCat(){
     global $conn;
     $query="select * from category";
     $query_res=mysqli_query($conn,$query);
@@ -51,12 +92,10 @@ function findAllCat()
         echo " <a href='admin-category?edit={$cat_id}' onclick='showedit()' name='edit' class='btn btn-warning'>Update</a></td>";
         echo "</tr>";
     }
-}
-                                
+}                              
 }
 
-function fieldname()
-{
+function fieldname(){
     global $conn;
     $query="select * from image";
     $query_res=mysqli_query($conn,$query);
@@ -67,39 +106,26 @@ function fieldname()
         echo "<th scope='col'>$row->name</th>";
 }}}
 
-function allPost($cat_id)
-{
+function allPost($cat_id){
     global $conn;
-    $query="SELECT * FROM category WHERE id = '$cat_id'";
-    $res=mysqli_query($conn,$query);
-    while($row=mysqli_fetch_assoc($res)){
+    $arr = array();
+    $query = "SELECT * FROM category WHERE id = '$cat_id'";
+    $res = mysqli_query($conn,$query);
+    while($row = mysqli_fetch_assoc($res)){
         $image_location =strval($row['title']);
     }
-    $query="select * from image where Cat_id='$cat_id'";
-    $query_res=mysqli_query($conn,$query);
+    array_push($arr,$image_location);
+    $query = "select * from image where Cat_id='$cat_id'";
+    $query_res = mysqli_query($conn,$query);
     if(!$query_res){
         die("Query failed ");
     }else{
-        while($row=mysqli_fetch_row($query_res)){
-        echo "<tr>";
-        for($i=0;$i<count($row);$i++){
-            if($i==2){
-                $img=$row[2];
-                echo "<td><img class='img-responsive' src='images/category/{$image_location}/{$row[$i]}'></td>";
-            }else{
-                echo "<td>{$row[$i]}</td>";
-            }
-        }
-        echo "<td><a class='btn btn-danger' href='admin-posts?delete=$row[0]'>Delete</td>";
-        echo "<td><a class='btn btn-primary' href='admin-posts?source=edit_post&edit=$row[0]'>Edit</td>";
-        echo "</tr>";
-    }
-}
-            
-}
+        array_push($arr,$query_res);
+       }
+    return $arr;
+    }          
 
-function allComment()
-{
+function allComment(){
     global $conn;
     $query="select * from comment";
     $query_res=mysqli_query($conn,$query);
@@ -123,8 +149,8 @@ function allComment()
         
     }                          
 }
-function fieldnameUser()
-{
+
+function fieldnameUser(){
     global $conn;
     $query="select * from user";
     $query_res=mysqli_query($conn,$query);
@@ -133,9 +159,11 @@ function fieldnameUser()
     }else{
     while($row=mysqli_fetch_field($query_res)){
         echo "<th scope='col'>$row->name</th>";
-}}}
-function allUser()
-    {
+        }
+    }
+}
+
+function allUser(){
         global $conn;
         $query="select * from user";
         $query_res=mysqli_query($conn,$query);
@@ -178,8 +206,7 @@ function confirmQuery($res){
     }
 }
 
-function metric()
-{
+function metric(){
     global $conn;
     $metric_detail=array();
     $res=mysqli_query($conn,"select count(*) from user where status=''");

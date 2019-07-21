@@ -82,6 +82,8 @@ if(!strpos($request,'?')){
         case '/profile' :
             require __DIR__ . '/account/profile.php';
             break;
+        case '/download':
+            require __DIR__ . '/action/download_dialog.php';
 
         case '/admin-users' :
             require __DIR__ . '/pages/admin/users.php';
